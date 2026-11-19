@@ -26,12 +26,9 @@ function Save-Database($dbObj) {
     [System.IO.File]::WriteAllText($dbPath, $json, [System.Text.Encoding]::UTF8)
 }
 
-# الحصول على الآي بي المحلي لعرضه للموبايل
-$localIP = (Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue | Where-Object { $_.IPAddress -notlike "127.*" -and $_.IPAddress -notlike "169.254.*" } | Select-Object -First 1).IPAddress
-if (-not $localIP) { $localIP = "172.20.1.2" }
-
-$ipAddress = [System.Net.IPAddress]::Any
+$ipAddress = [System.Net.IPAddress]::Loopback
 $listener = New-Object System.Net.Sockets.TcpListener($ipAddress, $port)
+$localIP = "172.20.1.2"
 
 try {
     $listener.Start()
@@ -342,9 +339,9 @@ try {
                 $today = (Get-Date).ToString("yyyy-MM-dd")
                 $todayApts = @($db.appointments | Where-Object { $_.date -eq $today -and $_.status -ne 'cancelled' })
                 if ($todayApts.Count -eq 0) {
-                    $reply = "يا بشمهندس أحمد، جدولك النهاردة فاضي تماماً ومفيش أي مواعيد مسجلة حتى الآن. تحب نسكن موعد من سلة المؤجلات؟"
+                    $reply = "يا أستاذ سليمان، جدولك النهاردة فاضي تماماً ومفيش أي مواعيد مسجلة حتى الآن. تحب نسكن موعد من سلة المؤجلات؟"
                 } else {
-                    $reply = "جدولك النهاردة يحتوي على $($todayApts.Count) موعد:`n"
+                    $reply = "جدولك النهاردة يا أستاذ سليمان يحتوي على $($todayApts.Count) موعد:`n"
                     foreach ($a in $todayApts) {
                         $reply += "• الساعة $($a.time) - $($a.client_name) ($($a.type)) في $($a.area)`n"
                     }

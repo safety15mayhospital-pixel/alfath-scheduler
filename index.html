@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>الفتح الذكي - شركة الفتح للأنظمة الذكية</title>
-  <meta name="description" content="نظام إدارة المواعيد والعملاء والعمل الميداني لشركة الفتح للأنظمة الذكية">
-  <meta name="theme-color" content="#047857">
+  <meta name="description" content="نظام إدارة المواعيد والعملاء والعمل الميداني - شركة الفتح للأنظمة الذكية (Al-Fateh Smart Systems Company)">
+  <meta name="theme-color" content="#0B1D48">
   
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/svg+xml" href="icon.svg">
-  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
 
   <!-- الخطوط العربية الراقية Cairo و Tajawal -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,18 +26,15 @@
       theme: {
         extend: {
           colors: {
-            royal: {
-              50: '#ecfdf5',
-              100: '#d1fae5',
-              200: '#a7f3d0',
-              300: '#6ee7b7',
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-              700: '#047857',
-              800: '#065f46',
-              900: '#064e3b',
-              950: '#022c22'
+            brand: {
+              navy: '#0B1D48',
+              blue: '#0099F7',
+              royal: '#1D56B8',
+              darkBg: '#070E20',
+              darkCard: '#0F1D3A',
+              lightBg: '#F0F6FC',
+              lightCard: '#FFFFFF',
+              lightBorder: '#D8E6F5'
             }
           },
           fontFamily: {
@@ -53,6 +50,14 @@
       font-family: 'Cairo', 'Tajawal', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
+    body.dark {
+      background-color: #070E20;
+      color: #F8FAFC;
+    }
+    body:not(.dark) {
+      background-color: #F0F6FC;
+      color: #0B1D48;
+    }
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -61,7 +66,7 @@
       background: rgba(0, 0, 0, 0.05);
     }
     .custom-scrollbar::-webkit-scrollbar-thumb {
-      background-color: #047857;
+      background-color: #0099F7;
       border-radius: 9999px;
     }
     .draggable-card {
@@ -72,45 +77,48 @@
       cursor: grabbing;
     }
     .drag-over {
-      background-color: rgba(16, 185, 129, 0.15) !important;
-      border: 2px dashed #10b981 !important;
+      background-color: rgba(0, 153, 247, 0.15) !important;
+      border: 2px dashed #0099F7 !important;
     }
-    @keyframes pulse-ring {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.1); opacity: 0.4; }
-      100% { transform: scale(0.95); opacity: 0.8; }
+    .tech-glow {
+      box-shadow: 0 0 20px rgba(0, 153, 247, 0.25);
     }
-    .animate-pulse-ring {
-      animation: pulse-ring 2s infinite ease-in-out;
+    .tech-border-glow {
+      border: 1px solid rgba(0, 153, 247, 0.3);
+    }
+    .logo-container {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 153, 247, 0.4);
+      box-shadow: 0 0 15px rgba(0, 153, 247, 0.3);
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 transition-colors duration-200 min-h-screen flex flex-col antialiased selection:bg-royal-600 selection:text-white">
+<body class="min-h-screen flex flex-col antialiased selection:bg-[#0099F7] selection:text-white transition-colors duration-200">
 
-  <!-- الخلفية التدرجية الملكية الفاخرة -->
+  <!-- الخلفية التدرجية الملكية الذكية واللمسات الضوئية -->
   <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-    <div class="absolute -top-32 -right-32 w-96 h-96 bg-royal-700/15 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 -left-32 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-32 right-1/4 w-96 h-96 bg-royal-900/20 rounded-full blur-3xl"></div>
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-[#0099F7]/12 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 -left-32 w-80 h-80 bg-[#1D56B8]/15 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 right-1/4 w-96 h-96 bg-[#0B1D48]/30 rounded-full blur-3xl"></div>
   </div>
 
-  <!-- الهيدر والنافبار العلوي الفخم -->
-  <header class="sticky top-0 z-40 bg-slate-900/90 dark:bg-slate-900/90 border-b border-slate-800/80 backdrop-blur-md px-3 sm:px-6 py-2.5 flex items-center justify-between shadow-lg">
+  <!-- الهيدر والنافبار العلوي الفخم بتدرج الكحلي والأزرق المضيء -->
+  <header class="sticky top-0 z-40 bg-gradient-to-r from-[#0B1D48] via-[#0F2356] to-[#0B1D48] border-b border-[#0099F7]/30 backdrop-blur-md px-3 sm:px-6 py-2.5 flex items-center justify-between shadow-xl">
     
-    <!-- الشعار والاسم -->
+    <!-- الشعار والاسم الرسمي -->
     <div class="flex items-center gap-3">
-      <div class="relative flex items-center justify-center p-2 rounded-2xl bg-gradient-to-br from-royal-800 to-royal-950 border border-royal-500/30 shadow-md shadow-royal-950/60">
-        <img src="icon.svg" alt="شركة الفتح" class="w-8 h-8 sm:w-10 sm:h-10">
-        <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-slate-900"></span>
+      <div class="relative logo-container p-1 rounded-2xl flex items-center justify-center shrink-0">
+        <img src="logo.png" alt="شركة الفتح للأنظمة الذكية" class="w-9 h-9 sm:w-11 sm:h-11 object-contain rounded-xl">
+        <span class="absolute -top-1 -right-1 w-3 h-3 bg-[#0099F7] rounded-full border-2 border-[#0B1D48] animate-pulse"></span>
       </div>
       <div>
         <div class="flex items-center gap-2">
           <h1 class="text-base sm:text-xl font-black text-white tracking-wide">الفتح الذكي</h1>
-          <span class="hidden sm:inline-block px-2 py-0.5 rounded-full text-[11px] font-bold bg-royal-900/80 text-emerald-300 border border-royal-700/50">
+          <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#0099F7]/20 text-[#67c5ff] border border-[#0099F7]/40">
             شركة الفتح للأنظمة الذكية
           </span>
         </div>
-        <p class="text-[11px] sm:text-xs text-slate-400 font-medium">إدارة المواعيد والعملاء والعمل الميداني</p>
+        <p class="text-[10px] sm:text-xs text-slate-300 font-semibold tracking-wider">Al-Fateh Smart Systems Company</p>
       </div>
     </div>
 
@@ -118,38 +126,38 @@
     <div class="flex items-center gap-2 sm:gap-3">
 
       <!-- زر الطوارئ (إغلاق اليوم) -->
-      <button onclick="openEmergencyModal()" title="إغلاق حجوزات اليوم للطوارئ" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-rose-950/80 hover:bg-rose-900 border border-rose-700/60 text-rose-300 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95">
+      <button onclick="openEmergencyModal()" title="إغلاق حجوزات اليوم للطوارئ" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-rose-950/80 hover:bg-rose-900 border border-rose-600/50 text-rose-300 text-xs font-bold flex items-center gap-1.5 transition-all shadow-md active:scale-95">
         <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-400"></i>
         <span class="hidden md:inline">زر الطوارئ</span>
         <span class="text-[11px] bg-rose-900 px-1.5 py-0.5 rounded">إغلاق اليوم</span>
       </button>
 
       <!-- زر سلة المؤجلات الذكية -->
-      <button onclick="togglePostponedDrawer()" title="سلة المؤجلات الذكية" class="relative p-2 sm:px-3 sm:py-1.5 rounded-xl bg-amber-950/40 hover:bg-amber-900/60 border border-amber-600/40 text-amber-300 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95">
+      <button onclick="togglePostponedDrawer()" title="سلة المؤجلات الذكية" class="relative p-2 sm:px-3 sm:py-1.5 rounded-xl bg-[#0F1D3A] hover:bg-[#15274D] border border-amber-500/40 text-amber-300 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95">
         <i data-lucide="archive" class="w-4 h-4 text-amber-400"></i>
         <span class="hidden lg:inline">سلة المؤجلات</span>
         <span id="postponed-badge" class="px-1.5 py-0.2 rounded-full text-[10px] font-black bg-amber-500 text-slate-950">0</span>
       </button>
 
-      <!-- زر صفحة الحجز الخارجي /book -->
-      <a href="book.html" target="_blank" title="رابط حجز العملاء الخارجي" class="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95">
-        <i data-lucide="external-link" class="w-4 h-4 text-royal-400"></i>
+      <!-- زر صفحة الحجز الخارجي /book.html -->
+      <a href="book.html" target="_blank" title="رابط حجز العملاء الخارجي" class="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-[#0F1D3A] hover:bg-[#1D56B8]/50 border border-[#0099F7]/30 text-slate-200 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95">
+        <i data-lucide="external-link" class="w-4 h-4 text-[#0099F7]"></i>
         <span class="hidden md:inline">صفحة الحجز (/book)</span>
       </a>
 
       <!-- زر المساعد الذكي AI -->
-      <button onclick="toggleAiDrawer()" title="المساعد الذكي (صوت، صورة، كتابة)" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-royal-700 to-emerald-600 hover:from-royal-600 hover:to-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-royal-950 transition-all active:scale-95">
-        <i data-lucide="sparkles" class="w-4 h-4 text-emerald-200 animate-spin" style="animation-duration: 8s;"></i>
+      <button onclick="toggleAiDrawer()" title="المساعد الذكي (صوت، صورة، كتابة)" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-[#0099F7]/30 transition-all active:scale-95">
+        <i data-lucide="sparkles" class="w-4 h-4 text-cyan-200 animate-spin" style="animation-duration: 8s;"></i>
         <span>المساعد الذكي</span>
       </button>
 
       <!-- زر تبديل الوضع الليلي / الفاتح -->
-      <button onclick="toggleTheme()" title="تبديل الوضع الليلي / الفاتح" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all active:scale-95">
-        <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+      <button onclick="toggleTheme()" title="تبديل الوضع الليلي / الفاتح" class="p-2 rounded-xl bg-[#0F1D3A] hover:bg-[#15274D] text-slate-300 border border-[#0099F7]/30 transition-all active:scale-95">
+        <i id="theme-icon" data-lucide="sun" class="w-4 h-4 text-amber-400"></i>
       </button>
 
       <!-- زر الإعدادات -->
-      <button onclick="openSettingsModal()" title="إعدادات النظام" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all active:scale-95">
+      <button onclick="openSettingsModal()" title="إعدادات النظام" class="p-2 rounded-xl bg-[#0F1D3A] hover:bg-[#15274D] text-slate-300 border border-[#0099F7]/30 transition-all active:scale-95">
         <i data-lucide="settings" class="w-4 h-4"></i>
       </button>
 
@@ -157,15 +165,15 @@
   </header>
 
   <!-- تنبيه تجميع المناطق (Area Batching Notification Banner) -->
-  <div id="area-batching-banner" class="hidden bg-gradient-to-r from-emerald-950 via-royal-900 to-slate-900 border-b border-emerald-600/40 px-4 py-2 text-xs sm:text-sm font-semibold text-emerald-200 flex items-center justify-between shadow-md">
+  <div id="area-batching-banner" class="hidden bg-gradient-to-r from-[#0B1D48] via-[#0F285E] to-[#070E20] border-b border-[#0099F7]/50 px-4 py-2 text-xs sm:text-sm font-semibold text-[#8FD5FF] flex items-center justify-between shadow-lg">
     <div class="flex items-center gap-2">
-      <span class="p-1 rounded bg-emerald-500/20 text-emerald-400">📍</span>
+      <span class="p-1 rounded bg-[#0099F7]/20 text-[#0099F7]">📍</span>
       <span id="area-batching-text">تنبيه تجميع المناطق: تم رصد أكثر من موعد في نفس المنطقة اليوم!</span>
     </div>
-    <button onclick="document.getElementById('area-batching-banner').classList.add('hidden')" class="text-emerald-400 hover:text-white text-xs px-2 py-0.5 rounded">إخفاء ✕</button>
+    <button onclick="document.getElementById('area-batching-banner').classList.add('hidden')" class="text-[#0099F7] hover:text-white text-xs px-2 py-0.5 rounded font-bold">إخفاء ✕</button>
   </div>
 
-  <!-- التنبيهات المستعجلة والمواعيد القادمة في اليوم -->
+  <!-- التنبيهات المستعجلة والمنبهات -->
   <div id="active-alarm-banner" class="hidden bg-rose-950 border-b border-rose-600 text-rose-200 px-4 py-2 text-xs sm:text-sm font-bold flex items-center justify-between animate-pulse">
     <div class="flex items-center gap-2">
       <span class="text-rose-400 text-base">🚨</span>
@@ -178,76 +186,75 @@
   </div>
 
   <!-- شريط التحكم والتنقل في التقويم -->
-  <div class="bg-slate-900/60 border-b border-slate-800 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
+  <div class="bg-[#0B1D48]/80 dark:bg-[#070E20]/90 border-b border-[#0099F7]/20 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
     
-    <!-- عروض التقويم الأربعة (يومي، أسبوعي، شهري، وقائمة مهام) -->
-    <div class="flex items-center bg-slate-850 p-1 rounded-2xl border border-slate-800 text-xs font-bold">
-      <button id="view-day" onclick="switchCalendarView('day')" class="px-3 py-1.5 rounded-xl bg-royal-700 text-white shadow-sm transition-all">يومي</button>
-      <button id="view-week" onclick="switchCalendarView('week')" class="px-3 py-1.5 rounded-xl text-slate-400 hover:text-white transition-all">أسبوعي</button>
-      <button id="view-month" onclick="switchCalendarView('month')" class="px-3 py-1.5 rounded-xl text-slate-400 hover:text-white transition-all">شهري</button>
-      <button id="view-agenda" onclick="switchCalendarView('agenda')" class="px-3 py-1.5 rounded-xl text-slate-400 hover:text-white transition-all">قائمة المهام</button>
+    <!-- عروض التقويم الأربعة -->
+    <div class="flex items-center bg-[#0F1D3A] p-1 rounded-2xl border border-[#0099F7]/30 text-xs font-bold">
+      <button id="view-day" onclick="switchCalendarView('day')" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] text-white shadow-sm transition-all">يومي</button>
+      <button id="view-week" onclick="switchCalendarView('week')" class="px-3 py-1.5 rounded-xl text-slate-300 hover:text-white transition-all">أسبوعي</button>
+      <button id="view-month" onclick="switchCalendarView('month')" class="px-3 py-1.5 rounded-xl text-slate-300 hover:text-white transition-all">شهري</button>
+      <button id="view-agenda" onclick="switchCalendarView('agenda')" class="px-3 py-1.5 rounded-xl text-slate-300 hover:text-white transition-all">قائمة المهام</button>
     </div>
 
     <!-- أزرار التنقل بالتاريخ واليوم الحالي -->
     <div class="flex items-center gap-2">
-      <button onclick="navigateDate(-1)" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all active:scale-95" title="السابق">
+      <button onclick="navigateDate(-1)" class="p-1.5 rounded-xl bg-[#0F1D3A] hover:bg-[#1D56B8] text-slate-200 border border-[#0099F7]/30 transition-all active:scale-95" title="السابق">
         <i data-lucide="chevron-right" class="w-4 h-4"></i>
       </button>
 
-      <button onclick="navigateToday()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white transition-all">
+      <button onclick="navigateToday()" class="px-3 py-1.5 rounded-xl bg-[#0F1D3A] hover:bg-[#1D56B8] border border-[#0099F7]/30 text-xs font-bold text-white transition-all">
         اليوم
       </button>
 
-      <button onclick="navigateDate(1)" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-all active:scale-95" title="التالي">
+      <button onclick="navigateDate(1)" class="p-1.5 rounded-xl bg-[#0F1D3A] hover:bg-[#1D56B8] text-slate-200 border border-[#0099F7]/30 transition-all active:scale-95" title="التالي">
         <i data-lucide="chevron-left" class="w-4 h-4"></i>
       </button>
 
-      <input type="date" id="calendar-date-picker" onchange="onDatePickerChange(this.value)" class="bg-slate-800 border border-slate-700 text-white text-xs font-semibold px-2.5 py-1.5 rounded-xl outline-none focus:border-royal-500">
+      <input type="date" id="calendar-date-picker" onchange="onDatePickerChange(this.value)" class="bg-[#0F1D3A] border border-[#0099F7]/40 text-white text-xs font-semibold px-2.5 py-1.5 rounded-xl outline-none focus:border-[#0099F7]">
 
-      <span id="current-date-label" class="text-xs sm:text-sm font-bold text-emerald-400 pr-2">
-        <!-- يعبأ تلقائياً: الخميس 19 نوفمبر 2026 -->
+      <span id="current-date-label" class="text-xs sm:text-sm font-bold text-[#0099F7] pr-2">
       </span>
     </div>
 
     <!-- زر إضافة موعد جديد -->
-    <button onclick="openAppointmentModal()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-royal-600 to-emerald-600 hover:from-royal-500 hover:to-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-royal-950 transition-all active:scale-95">
+    <button onclick="openAppointmentModal()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-[#0099F7]/30 transition-all active:scale-95">
       <i data-lucide="plus" class="w-4 h-4"></i>
       <span>إضافة موعد جديد</span>
     </button>
 
   </div>
 
-  <!-- مفتاح الألوان والتصنيفات الخمسة -->
-  <div class="bg-slate-900/40 border-b border-slate-800/60 px-3 sm:px-6 py-2 overflow-x-auto custom-scrollbar flex items-center gap-4 text-[11px] font-semibold text-slate-300">
+  <!-- مفتاح الألوان والتصنيفات الخمسة المتباينة -->
+  <div class="bg-[#070E20]/60 dark:bg-[#070E20]/60 border-b border-[#0099F7]/15 px-3 sm:px-6 py-2 overflow-x-auto custom-scrollbar flex items-center gap-4 text-[11px] font-semibold text-slate-300">
     <span class="text-slate-400 font-bold shrink-0">تصنيفات المواعيد:</span>
     
     <span class="flex items-center gap-1.5 shrink-0">
-      <span class="w-3 h-3 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50"></span>
-      <span>معاينة (أزرق)</span>
+      <span class="w-3 h-3 rounded-full bg-[#0099F7] shadow-sm shadow-[#0099F7]/60"></span>
+      <span>معاينة (أزرق سماوي)</span>
     </span>
 
     <span class="flex items-center gap-1.5 shrink-0">
-      <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></span>
+      <span class="w-3 h-3 rounded-full bg-[#10B981] shadow-sm shadow-[#10B981]/60"></span>
       <span>تركيب (أخضر زمردي)</span>
     </span>
 
     <span class="flex items-center gap-1.5 shrink-0">
-      <span class="w-3 h-3 rounded-full bg-amber-500 shadow-sm shadow-amber-500/50"></span>
+      <span class="w-3 h-3 rounded-full bg-[#F59E0B] shadow-sm shadow-[#F59E0B]/60"></span>
       <span>صيانة (برتقالي)</span>
     </span>
 
     <span class="flex items-center gap-1.5 shrink-0">
-      <span class="w-3 h-3 rounded-full bg-purple-500 shadow-sm shadow-purple-500/50"></span>
+      <span class="w-3 h-3 rounded-full bg-[#8B5CF6] shadow-sm shadow-[#8B5CF6]/60"></span>
       <span>زيارة (بنفسجي)</span>
     </span>
 
     <span class="flex items-center gap-1.5 shrink-0">
-      <span class="w-3 h-3 rounded-full bg-slate-600 shadow-sm shadow-slate-600/50"></span>
-      <span>موعد خاص (رمادي - سري)</span>
+      <span class="w-3 h-3 rounded-full bg-[#64748B] shadow-sm shadow-[#64748B]/60"></span>
+      <span>موعد خاص (رمادي داكن - سري)</span>
     </span>
 
     <span class="mr-auto hidden sm:flex items-center gap-1 text-[10px] text-slate-400">
-      <i data-lucide="info" class="w-3.5 h-3.5 text-royal-400"></i>
+      <i data-lucide="info" class="w-3.5 h-3.5 text-[#0099F7]"></i>
       يمكنك السحب والإفلات (Drag & Drop) لأي موعد لتعديل وقته بلمسة واحدة
     </span>
   </div>
@@ -257,58 +264,53 @@
     
     <!-- 1. عرض اليوم (Day View) -->
     <div id="view-container-day" class="space-y-3">
-      <!-- أوقات اليوم من 08:00 إلى 22:00 مع فواصل المشاوير والمواعيد المسقطة -->
       <div id="day-slots-container" class="space-y-2">
-        <!-- يعبأ ديناميكياً -->
       </div>
     </div>
 
     <!-- 2. عرض الأسبوع (Week View) -->
     <div id="view-container-week" class="hidden">
       <div id="week-grid-container" class="grid grid-cols-1 sm:grid-cols-7 gap-3">
-        <!-- يعبأ ديناميكياً بأعمدة أيام الأسبوع -->
       </div>
     </div>
 
     <!-- 3. عرض الشهر (Month View) -->
     <div id="view-container-month" class="hidden">
       <div id="month-grid-container" class="grid grid-cols-7 gap-2">
-        <!-- يعبأ ديناميكياً بشبكة الشهر -->
       </div>
     </div>
 
     <!-- 4. عرض قائمة المهام السريعة (Agenda View) -->
     <div id="view-container-agenda" class="hidden max-w-4xl mx-auto space-y-3">
       <div id="agenda-list-container" class="space-y-3">
-        <!-- يعبأ ديناميكياً -->
       </div>
     </div>
 
   </main>
 
   <!-- شريط التنقل السفلي للموبايل (Mobile Bottom Navigation Bar) -->
-  <nav class="sm:hidden sticky bottom-0 z-40 bg-slate-900/95 border-t border-slate-800 backdrop-blur-lg px-4 py-2 flex items-center justify-around text-xs font-bold text-slate-400">
-    <button onclick="switchCalendarView('day')" class="flex flex-col items-center gap-1 focus:text-emerald-400">
-      <i data-lucide="calendar" class="w-5 h-5"></i>
+  <nav class="sm:hidden sticky bottom-0 z-40 bg-[#0B1D48]/95 border-t border-[#0099F7]/30 backdrop-blur-lg px-4 py-2 flex items-center justify-around text-xs font-bold text-slate-300">
+    <button onclick="switchCalendarView('day')" class="flex flex-col items-center gap-1 focus:text-[#0099F7]">
+      <i data-lucide="calendar" class="w-5 h-5 text-[#0099F7]"></i>
       <span>الجدول</span>
     </button>
     <button onclick="togglePostponedDrawer()" class="flex flex-col items-center gap-1 focus:text-amber-400 relative">
-      <i data-lucide="archive" class="w-5 h-5"></i>
+      <i data-lucide="archive" class="w-5 h-5 text-amber-400"></i>
       <span>المؤجلات</span>
       <span id="postponed-badge-mobile" class="absolute -top-1 -right-2 px-1 rounded-full text-[9px] bg-amber-500 text-slate-950 font-black">0</span>
     </button>
-    <button onclick="openAppointmentModal()" class="flex flex-col items-center gap-1 text-emerald-400">
-      <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-royal-700 to-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-950 border-2 border-slate-900">
+    <button onclick="openAppointmentModal()" class="flex flex-col items-center gap-1 text-[#0099F7]">
+      <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-[#1D56B8] to-[#0099F7] flex items-center justify-center text-white shadow-lg shadow-[#0099F7]/40 border-2 border-[#0B1D48]">
         <i data-lucide="plus" class="w-6 h-6"></i>
       </div>
       <span>إضافة</span>
     </button>
-    <button onclick="toggleAiDrawer()" class="flex flex-col items-center gap-1 focus:text-emerald-400">
-      <i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i>
+    <button onclick="toggleAiDrawer()" class="flex flex-col items-center gap-1 focus:text-[#0099F7]">
+      <i data-lucide="sparkles" class="w-5 h-5 text-cyan-300"></i>
       <span>المساعد</span>
     </button>
-    <button onclick="openSettingsModal()" class="flex flex-col items-center gap-1 focus:text-emerald-400">
-      <i data-lucide="settings" class="w-5 h-5"></i>
+    <button onclick="openSettingsModal()" class="flex flex-col items-center gap-1 focus:text-[#0099F7]">
+      <i data-lucide="settings" class="w-5 h-5 text-slate-300"></i>
       <span>الإعدادات</span>
     </button>
   </nav>
@@ -318,11 +320,11 @@
   <!-- ============================================================= -->
 
   <!-- 1. نافذة بطاقة العميل الذكي (Client Smart Card Modal) -->
-  <div id="client-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in duration-200">
+  <div id="client-modal" class="fixed inset-0 z-50 bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-[#0F1D3A] border border-[#0099F7]/30 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in duration-200">
       
-      <!-- هيدر البطاقة الذكية بلون نوع الموعد -->
-      <div id="smart-card-header" class="p-5 bg-gradient-to-l from-royal-800 to-royal-950 border-b border-slate-800 flex items-start justify-between">
+      <!-- هيدر البطاقة الذكية -->
+      <div id="smart-card-header" class="p-5 bg-gradient-to-l from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/30 flex items-start justify-between">
         <div class="flex items-center gap-3">
           <div id="smart-card-icon" class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl">
             🛠️
@@ -330,7 +332,7 @@
           <div>
             <span id="smart-card-type-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/20 text-white">تركيب</span>
             <h3 id="smart-card-client-name" class="text-lg font-bold text-white mt-1">أ / محمود رضوان</h3>
-            <p id="smart-card-title" class="text-xs text-emerald-200 mt-0.5">تركيب 8 كاميرات مراقبة IP</p>
+            <p id="smart-card-title" class="text-xs text-[#8FD5FF] mt-0.5">تركيب 8 كاميرات مراقبة IP</p>
           </div>
         </div>
         <button onclick="closeSmartCardModal()" class="text-slate-400 hover:text-white p-1 rounded-xl bg-slate-800/60">
@@ -341,23 +343,22 @@
       <!-- محتوى البطاقة الذكية -->
       <div class="p-5 space-y-4 max-h-[75vh] overflow-y-auto custom-scrollbar text-sm">
         
-        <!-- التوقيت والتاريخ وفاصل المشوار والأولوية -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-          <div class="bg-slate-850 p-2.5 rounded-2xl border border-slate-800">
+          <div class="bg-[#0B1D48]/70 p-2.5 rounded-2xl border border-[#0099F7]/20">
             <span class="text-slate-400 block text-[10px]">التاريخ والوقت:</span>
             <strong id="smart-card-datetime" class="text-white text-xs">2026-11-19 | 10:00 ص</strong>
           </div>
-          <div class="bg-slate-850 p-2.5 rounded-2xl border border-slate-800">
+          <div class="bg-[#0B1D48]/70 p-2.5 rounded-2xl border border-[#0099F7]/20">
             <span class="text-slate-400 block text-[10px]">فاصل المشوار:</span>
-            <strong id="smart-card-buffer" class="text-emerald-400 text-xs">45 دقيقة قبل وبعد</strong>
+            <strong id="smart-card-buffer" class="text-[#0099F7] text-xs">45 دقيقة قبل وبعد</strong>
           </div>
-          <div class="bg-slate-850 p-2.5 rounded-2xl border border-slate-800 col-span-2 sm:col-span-1">
+          <div class="bg-[#0B1D48]/70 p-2.5 rounded-2xl border border-[#0099F7]/20 col-span-2 sm:col-span-1">
             <span class="text-slate-400 block text-[10px]">الأولوية والحالة:</span>
             <strong id="smart-card-priority" class="text-amber-400 text-xs">مهم جداً - مؤكد</strong>
           </div>
         </div>
 
-        <!-- أزرار الإجراءات الفورية الثلاثة للموبايل: اتصال هاتفي - واتساب - الخريطة -->
+        <!-- أزرار الإجراءات الفورية الثلاثة للموبايل -->
         <div class="grid grid-cols-3 gap-2 pt-1">
           <a id="smart-card-call-btn" href="#" class="p-3 rounded-2xl bg-blue-600/20 hover:bg-blue-600 border border-blue-500/40 text-blue-300 hover:text-white font-bold text-xs flex flex-col items-center justify-center gap-1 transition-all">
             <i data-lucide="phone-call" class="w-5 h-5"></i>
@@ -367,44 +368,38 @@
             <i data-lucide="message-square" class="w-5 h-5"></i>
             <span>واتساب فوري</span>
           </a>
-          <a id="smart-card-map-btn" href="#" target="_blank" class="p-3 rounded-2xl bg-amber-600/20 hover:bg-amber-600 border border-amber-500/40 text-amber-300 hover:text-white font-bold text-xs flex flex-col items-center justify-center gap-1 transition-all">
+          <a id="smart-card-map-btn" href="#" target="_blank" class="p-3 rounded-2xl bg-[#0099F7]/20 hover:bg-[#0099F7] border border-[#0099F7]/40 text-[#67C5FF] hover:text-white font-bold text-xs flex flex-col items-center justify-center gap-1 transition-all">
             <i data-lucide="map-pin" class="w-5 h-5"></i>
             <span>افتح الخريطة</span>
           </a>
         </div>
 
-        <!-- العنوان والحي بالتفصيل -->
-        <div class="bg-slate-850 p-3 rounded-2xl border border-slate-800">
+        <div class="bg-[#0B1D48]/70 p-3 rounded-2xl border border-[#0099F7]/20">
           <span class="text-xs font-bold text-slate-400 block mb-1">📍 المنطقة والعنوان:</span>
           <p id="smart-card-address" class="text-white text-xs font-medium"></p>
         </div>
 
-        <!-- الملاحظات الفنية (نوع الكاميرات، عدد النقط، وصف العطل) -->
-        <div class="bg-slate-850 p-3 rounded-2xl border border-slate-800">
-          <span class="text-xs font-bold text-emerald-400 block mb-1">🛠️ الملاحظات الفنية ومواصفات الأجهزة:</span>
+        <div class="bg-[#0B1D48]/70 p-3 rounded-2xl border border-[#0099F7]/20">
+          <span class="text-xs font-bold text-[#0099F7] block mb-1">🛠️ الملاحظات الفنية ومواصفات الأجهزة:</span>
           <p id="smart-card-notes" class="text-slate-300 text-xs whitespace-pre-line"></p>
         </div>
 
-        <!-- رسوم المعاينة أو العربون -->
-        <div class="bg-slate-850 p-3 rounded-2xl border border-slate-800 flex items-center justify-between">
+        <div class="bg-[#0B1D48]/70 p-3 rounded-2xl border border-[#0099F7]/20 flex items-center justify-between">
           <span class="text-xs font-bold text-slate-400">💵 رسوم المعاينة / العربون:</span>
-          <span id="smart-card-fee" class="text-base font-extrabold text-emerald-400">300 ج.م</span>
+          <span id="smart-card-fee" class="text-base font-extrabold text-[#0099F7]">300 ج.م</span>
         </div>
 
-        <!-- سجل المواعيد السابقة للعميل -->
-        <div class="bg-slate-850 p-3 rounded-2xl border border-slate-800">
+        <div class="bg-[#0B1D48]/70 p-3 rounded-2xl border border-[#0099F7]/20">
           <span class="text-xs font-bold text-slate-400 block mb-2">📜 سجل المواعيد السابقة لهذا العميل:</span>
           <div id="smart-card-history" class="space-y-1.5 text-xs text-slate-300">
-            <!-- يعبأ ديناميكياً -->
           </div>
         </div>
 
       </div>
 
-      <!-- أزرار الإدارة السفلية (تعديل، تأجيل، إلغاء، حذف) -->
-      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-2">
+      <div class="p-4 bg-[#070E20] border-t border-[#0099F7]/20 flex items-center justify-between gap-2">
         <div class="flex gap-2">
-          <button id="smart-card-edit-btn" onclick="" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all">تعديل الموعد</button>
+          <button id="smart-card-edit-btn" onclick="" class="px-3 py-2 rounded-xl bg-[#0F1D3A] hover:bg-[#1D56B8] text-white text-xs font-bold border border-[#0099F7]/30 transition-all">تعديل الموعد</button>
           <button id="smart-card-postpone-btn" onclick="" class="px-3 py-2 rounded-xl bg-amber-950 hover:bg-amber-900 border border-amber-700 text-amber-300 text-xs font-bold transition-all">نقل لسلة المؤجلات</button>
         </div>
         <button id="smart-card-delete-btn" onclick="" class="px-3 py-2 rounded-xl bg-rose-950 hover:bg-rose-900 border border-rose-800 text-rose-300 text-xs font-bold transition-all">حذف</button>
@@ -414,11 +409,11 @@
   </div>
 
   <!-- 2. نافذة إضافة وتعديل موعد (Appointment Form Modal) -->
-  <div id="apt-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
-      <div class="p-5 bg-gradient-to-l from-royal-800 to-royal-950 border-b border-slate-800 flex items-center justify-between">
+  <div id="apt-modal" class="fixed inset-0 z-50 bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-[#0F1D3A] border border-[#0099F7]/40 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
+      <div class="p-5 bg-gradient-to-l from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/30 flex items-center justify-between">
         <h3 id="apt-modal-title" class="text-base font-bold text-white flex items-center gap-2">
-          <i data-lucide="calendar-plus" class="w-5 h-5 text-emerald-400"></i>
+          <i data-lucide="calendar-plus" class="w-5 h-5 text-[#0099F7]"></i>
           <span>إضافة موعد جديد</span>
         </h3>
         <button onclick="closeAppointmentModal()" class="text-slate-400 hover:text-white p-1 rounded-xl bg-slate-800/60">
@@ -429,21 +424,20 @@
       <form id="apt-form" onsubmit="handleAppointmentSubmit(event)" class="p-5 space-y-4 max-h-[75vh] overflow-y-auto custom-scrollbar text-xs">
         <input type="hidden" id="form-apt-id">
 
-        <!-- نوع الموعد والأولوية -->
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">نوع الموعد *</label>
-            <select id="form-apt-type" required class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-medium focus:border-royal-500 outline-none">
-              <option value="inspection">معاينة (أزرق)</option>
+            <select id="form-apt-type" required class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white font-medium focus:border-[#0099F7] outline-none">
+              <option value="inspection">معاينة (أزرق سماوي)</option>
               <option value="installation">تركيب (أخضر زمردي)</option>
               <option value="maintenance">صيانة (برتقالي)</option>
               <option value="visit">زيارة (بنفسجي)</option>
-              <option value="private">موعد خاص (رمادي - سري)</option>
+              <option value="private">موعد خاص (رمادي داكن - سري)</option>
             </select>
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">الأولوية *</label>
-            <select id="form-apt-priority" required class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-medium focus:border-royal-500 outline-none">
+            <select id="form-apt-priority" required class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white font-medium focus:border-[#0099F7] outline-none">
               <option value="urgent">مهم جداً (منبه قوي)</option>
               <option value="normal" selected>عادي</option>
               <option value="low">غير مهم</option>
@@ -452,58 +446,53 @@
           </div>
         </div>
 
-        <!-- عنوان الموعد -->
         <div>
           <label class="block font-semibold text-slate-300 mb-1">عنوان الموعد / الخدمة *</label>
-          <input type="text" id="form-apt-title-input" required placeholder="مثال: تركيب شبكة كاميرات IP هيكفيجن 8 نقط" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none">
+          <input type="text" id="form-apt-title-input" required placeholder="مثال: تركيب شبكة كاميرات IP هيكفيجن 8 نقط" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none">
         </div>
 
-        <!-- بيانات العميل (الاسم والهاتف) -->
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">اسم العميل *</label>
-            <input type="text" id="form-apt-client-name" required placeholder="أ / محمود رضوان" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none">
+            <input type="text" id="form-apt-client-name" required placeholder="أ / محمود رضوان" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none">
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">رقم الهاتف / الواتساب *</label>
-            <input type="tel" id="form-apt-phone" required placeholder="010XXXXXXXX" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none" dir="ltr">
+            <input type="tel" id="form-apt-phone" required placeholder="010XXXXXXXX" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none" dir="ltr">
           </div>
         </div>
 
-        <!-- التاريخ والوقت والمدة -->
         <div class="grid grid-cols-3 gap-2">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">التاريخ *</label>
-            <input type="date" id="form-apt-date" required class="w-full py-2.5 px-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs focus:border-royal-500 outline-none">
+            <input type="date" id="form-apt-date" required class="w-full py-2.5 px-2 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white text-xs focus:border-[#0099F7] outline-none">
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">الوقت *</label>
-            <input type="time" id="form-apt-time" required class="w-full py-2.5 px-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs focus:border-royal-500 outline-none">
+            <input type="time" id="form-apt-time" required class="w-full py-2.5 px-2 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white text-xs focus:border-[#0099F7] outline-none">
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">المدة (دقيقة)</label>
-            <input type="number" id="form-apt-duration" value="60" min="15" step="15" class="w-full py-2.5 px-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs focus:border-royal-500 outline-none">
+            <input type="number" id="form-apt-duration" value="60" min="15" step="15" class="w-full py-2.5 px-2 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white text-xs focus:border-[#0099F7] outline-none">
           </div>
         </div>
 
-        <!-- فاصل المشوار ورسوم المعاينة -->
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">فاصل المشوار (دقيقة)</label>
-            <input type="number" id="form-apt-buffer" value="45" min="0" step="15" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none">
+            <input type="number" id="form-apt-buffer" value="45" min="0" step="15" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none">
             <span class="text-[10px] text-slate-400">وقت التنقل المحمي قبل وبعد</span>
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">رسوم المعاينة / العربون (ج.م)</label>
-            <input type="text" id="form-apt-fee" value="0" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none">
+            <input type="text" id="form-apt-fee" value="0" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none">
           </div>
         </div>
 
-        <!-- المنطقة والعنوان ورابط الخريطة -->
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">المنطقة / الحي *</label>
-            <select id="form-apt-area" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none">
+            <select id="form-apt-area" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none">
               <option value="التجمع الخامس">التجمع الخامس</option>
               <option value="المعادي">المعادي</option>
               <option value="الشيخ زايد">الشيخ زايد</option>
@@ -517,25 +506,23 @@
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">العنوان التفصيلي</label>
-            <input type="text" id="form-apt-address" placeholder="الشارع - رقم الفيلا أو العمارة" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none">
+            <input type="text" id="form-apt-address" placeholder="الشارع - رقم الفيلا أو العمارة" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none">
           </div>
         </div>
 
         <div>
           <label class="block font-semibold text-slate-300 mb-1">رابط خرائط جوجل أو إحداثيات الموقع</label>
-          <input type="url" id="form-apt-map" placeholder="https://maps.google.com/?q=..." class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none" dir="ltr">
+          <input type="url" id="form-apt-map" placeholder="https://maps.google.com/?q=..." class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none" dir="ltr">
         </div>
 
-        <!-- الملاحظات الفنية -->
         <div>
           <label class="block font-semibold text-slate-300 mb-1">الملاحظات الفنية ومواصفات الأجهزة</label>
-          <textarea id="form-apt-notes" rows="2" placeholder="نوع الكاميرات/الأجهزة، عدد النقط، وصف العطل أو طلبات العميل..." class="w-full py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-royal-500 outline-none"></textarea>
+          <textarea id="form-apt-notes" rows="2" placeholder="نوع الكاميرات/الأجهزة، عدد النقط، وصف العطل أو طلبات العميل..." class="w-full py-2 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white focus:border-[#0099F7] outline-none"></textarea>
         </div>
 
-        <!-- الأزرار -->
         <div class="pt-2 flex items-center justify-end gap-3">
-          <button type="button" onclick="closeAppointmentModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold transition-all">إلغاء</button>
-          <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-royal-600 to-emerald-600 hover:from-royal-500 hover:to-emerald-500 text-white font-bold shadow-lg shadow-royal-950 transition-all">حفظ الموعد</button>
+          <button type="button" onclick="closeAppointmentModal()" class="px-4 py-2.5 rounded-xl bg-[#0B1D48] hover:bg-[#1D56B8] text-slate-300 font-bold transition-all">إلغاء</button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white font-bold shadow-lg shadow-[#0099F7]/30 transition-all">حفظ الموعد</button>
         </div>
 
       </form>
@@ -543,9 +530,9 @@
   </div>
 
   <!-- 3. نافذة تأكيد تعديل الموعد بالسحب والإفلات وتجهيز رسالة واتساب (Drag Confirmation Modal) -->
-  <div id="drag-confirm-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md p-6 shadow-2xl text-center space-y-4">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl border border-emerald-500/40">
+  <div id="drag-confirm-modal" class="fixed inset-0 z-50 bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-[#0F1D3A] border border-[#0099F7]/40 rounded-3xl w-full max-w-md p-6 shadow-2xl text-center space-y-4">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-[#0099F7]/20 text-[#0099F7] flex items-center justify-center text-2xl border border-[#0099F7]/40">
         ✓
       </div>
       <div>
@@ -553,13 +540,13 @@
         <p id="drag-confirm-text" class="text-xs text-slate-300 mt-1"></p>
       </div>
 
-      <div class="p-3 bg-slate-850 rounded-2xl border border-slate-800 text-right text-xs">
+      <div class="p-3 bg-[#0B1D48]/80 rounded-2xl border border-[#0099F7]/30 text-right text-xs">
         <span class="text-slate-400 block mb-1 font-semibold">هل تريد تجهيز رسالة تعديل الموعد للعميل عبر واتساب؟</span>
-        <p id="drag-confirm-msg-preview" class="text-slate-200 text-[11px] bg-slate-900 p-2.5 rounded-xl border border-slate-800"></p>
+        <p id="drag-confirm-msg-preview" class="text-slate-200 text-[11px] bg-[#070E20] p-2.5 rounded-xl border border-slate-800"></p>
       </div>
 
       <div class="flex gap-2 pt-2">
-        <button onclick="closeDragConfirmModal()" class="w-1/2 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs">
+        <button onclick="closeDragConfirmModal()" class="w-1/2 py-2.5 rounded-xl bg-[#0B1D48] hover:bg-[#1D56B8] text-slate-300 font-bold text-xs">
           تم بدون إرسال
         </button>
         <a id="drag-confirm-wa-link" href="#" target="_blank" onclick="closeDragConfirmModal()" class="w-1/2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md shadow-emerald-950">
@@ -570,8 +557,8 @@
   </div>
 
   <!-- 4. سلة المؤجلات الذكية (Smart Postponed Drawer) -->
-  <div id="postponed-drawer" class="fixed inset-y-0 left-0 z-50 w-full sm:w-96 bg-slate-900 border-r border-slate-800 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
-    <div class="p-4 bg-gradient-to-r from-amber-950/80 to-slate-900 border-b border-amber-600/30 flex items-center justify-between">
+  <div id="postponed-drawer" class="fixed inset-y-0 left-0 z-50 w-full sm:w-96 bg-[#0F1D3A] border-r border-[#0099F7]/30 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-4 bg-gradient-to-r from-amber-950/80 to-[#0B1D48] border-b border-amber-600/30 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400">
           <i data-lucide="archive" class="w-5 h-5"></i>
@@ -601,16 +588,14 @@
       </p>
     </div>
 
-    <!-- قائمة المواعيد المؤجلة -->
     <div id="postponed-list" class="flex-1 p-3 space-y-2.5 overflow-y-auto custom-scrollbar">
-      <!-- تعبأ ديناميكياً -->
     </div>
   </div>
 
   <!-- 5. نافذة زر الطوارئ (Emergency Close Day Modal) -->
-  <div id="emergency-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-rose-800/80 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
-      <div class="p-5 bg-gradient-to-l from-rose-900 to-rose-950 border-b border-rose-800 flex items-center justify-between">
+  <div id="emergency-modal" class="fixed inset-0 z-50 bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-[#0F1D3A] border border-rose-800/80 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
+      <div class="p-5 bg-gradient-to-l from-rose-900 to-[#0B1D48] border-b border-rose-800 flex items-center justify-between">
         <div class="flex items-center gap-2 text-rose-200">
           <i data-lucide="alert-octagon" class="w-6 h-6 text-rose-400"></i>
           <div>
@@ -632,11 +617,10 @@
         </div>
 
         <div id="emergency-clients-container" class="space-y-2">
-          <!-- تعبأ بقائمة عملاء اليوم بعد الضغط على تنفيذ الإغلاق -->
         </div>
 
         <div id="emergency-actions" class="pt-2 flex gap-3">
-          <button type="button" onclick="closeEmergencyModal()" class="w-1/3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold">
+          <button type="button" onclick="closeEmergencyModal()" class="w-1/3 py-2.5 rounded-xl bg-[#0B1D48] hover:bg-[#1D56B8] text-slate-300 font-bold">
             تراجع
           </button>
           <button type="button" onclick="executeEmergencyClose()" class="w-2/3 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold shadow-lg shadow-rose-950 flex items-center justify-center gap-1.5">
@@ -649,16 +633,16 @@
   </div>
 
   <!-- 6. المساعد الذكي AI Drawer (صوت، صورة، كتابة) -->
-  <div id="ai-drawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-[440px] bg-slate-900 border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+  <div id="ai-drawer" class="fixed inset-y-0 right-0 z-50 w-full sm:w-[440px] bg-[#0F1D3A] border-l border-[#0099F7]/30 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
     <!-- هيدر المساعد -->
-    <div class="p-4 bg-gradient-to-r from-royal-900 to-slate-900 border-b border-royal-700/40 flex items-center justify-between">
+    <div class="p-4 bg-gradient-to-r from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/40 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400">
+        <div class="p-2 rounded-xl bg-[#0099F7]/20 text-[#0099F7]">
           <i data-lucide="bot" class="w-5 h-5"></i>
         </div>
         <div>
           <h3 class="font-bold text-white text-sm">المساعد الذكي لشركة الفتح</h3>
-          <p class="text-[11px] text-emerald-300">يفهم اللهجة المصرية (صوت، صورة، كتابة)</p>
+          <p class="text-[11px] text-[#8FD5FF]">يفهم اللهجة المصرية (صوت، صورة، كتابة)</p>
         </div>
       </div>
       <button onclick="toggleAiDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-white">
@@ -668,21 +652,21 @@
 
     <!-- رسائل الشات -->
     <div id="ai-chat-messages" class="flex-1 p-4 space-y-3 overflow-y-auto custom-scrollbar text-xs">
-      <div class="p-3.5 rounded-2xl bg-royal-950/60 border border-royal-700/40 text-slate-200 space-y-2">
-        <div class="flex items-center gap-2 text-emerald-400 font-bold">
-          <span>✨</span> أهلاً بك يا بشمهندس أحمد!
+      <div class="p-3.5 rounded-2xl bg-[#0B1D48]/80 border border-[#0099F7]/30 text-slate-200 space-y-2">
+        <div class="flex items-center gap-2 text-[#0099F7] font-bold">
+          <span>✨</span> أهلاً بك يا أستاذ سليمان!
         </div>
         <p class="text-xs leading-relaxed text-slate-300">
-          أنا مساعدك الذكي في إدارة مواعيد وعمليات شركة الفتح. يمكنك التحدث معي بالصوت أو كتابة أو رفع اسكرين شوت محادثة واتساب:
+          أنا مساعدك الذكي في إدارة مواعيد وعمليات شركة الفتح للأنظمة الذكية. يمكنك التحدث معي بالصوت أو كتابة أو رفع اسكرين شوت محادثة واتساب:
         </p>
         <div class="space-y-1 text-[11px] text-slate-400">
-          <div class="p-1.5 rounded-lg bg-slate-900/60 cursor-pointer hover:text-white" onclick="sendAiSamplePrompt('احجز تركيب 8 كاميرات للأستاذ طارق في المعادي بكرة الساعة 4 العصر')">
+          <div class="p-1.5 rounded-lg bg-[#070E20]/80 cursor-pointer hover:text-white" onclick="sendAiSamplePrompt('احجز تركيب 8 كاميرات للأستاذ طارق في المعادي بكرة الساعة 4 العصر')">
             💬 "احجز تركيب 8 كاميرات للأستاذ طارق في المعادي بكرة الساعة 4 العصر"
           </div>
-          <div class="p-1.5 rounded-lg bg-slate-900/60 cursor-pointer hover:text-white" onclick="sendAiSamplePrompt('رحل كل مواعيد بعد العصر لبكرة')">
+          <div class="p-1.5 rounded-lg bg-[#070E20]/80 cursor-pointer hover:text-white" onclick="sendAiSamplePrompt('رحل كل مواعيد بعد العصر لبكرة')">
             💬 "رحل كل مواعيد بعد العصر لبكرة"
           </div>
-          <div class="p-1.5 rounded-lg bg-slate-900/60 cursor-pointer hover:text-white" onclick="sendAiSamplePrompt('لخصلي جدول النهاردة وايه المواعيد المهمة')">
+          <div class="p-1.5 rounded-lg bg-[#070E20]/80 cursor-pointer hover:text-white" onclick="sendAiSamplePrompt('لخصلي جدول النهاردة وايه المواعيد المهمة')">
             💬 "لخصلي جدول النهاردة وايه المواعيد المهمة"
           </div>
         </div>
@@ -690,50 +674,46 @@
     </div>
 
     <!-- منطقة استخراج محادثات الواتساب بالصورة -->
-    <div id="ai-image-preview-area" class="hidden p-3 bg-slate-850 border-t border-slate-800 text-xs flex items-center justify-between">
+    <div id="ai-image-preview-area" class="hidden p-3 bg-[#0B1D48] border-t border-[#0099F7]/30 text-xs flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <img id="ai-preview-img" src="" class="w-10 h-10 rounded-lg object-cover border border-slate-700">
+        <img id="ai-preview-img" src="" class="w-10 h-10 rounded-lg object-cover border border-[#0099F7]">
         <div>
           <span class="font-bold text-white block">صورة محادثة واتساب جاهزة</span>
-          <span class="text-[10px] text-emerald-400">جارٍ تحليل البيانات واستخراج الموعد</span>
+          <span class="text-[10px] text-[#0099F7]">جارٍ تحليل البيانات واستخراج الموعد</span>
         </div>
       </div>
       <button onclick="clearImageUpload()" class="text-rose-400 text-xs">إلغاء ✕</button>
     </div>
 
-    <!-- حقل الإدخال والأزرار الثلاثة (كتابة، مايكروفون صوت، رفع صورة) -->
-    <div class="p-3 bg-slate-950 border-t border-slate-800">
+    <!-- حقل الإدخال والأزرار الثلاثة -->
+    <div class="p-3 bg-[#070E20] border-t border-[#0099F7]/30">
       <div class="flex items-center gap-2">
         
-        <!-- زر رفع صورة سكرين شوت -->
-        <label title="رفع صورة محادثة واتساب" class="cursor-pointer p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all flex items-center justify-center">
-          <i data-lucide="image" class="w-4 h-4 text-emerald-400"></i>
+        <label title="رفع صورة محادثة واتساب" class="cursor-pointer p-2.5 rounded-xl bg-[#0B1D48] hover:bg-[#1D56B8] text-slate-300 transition-all flex items-center justify-center">
+          <i data-lucide="image" class="w-4 h-4 text-[#0099F7]"></i>
           <input type="file" id="ai-image-input" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
         </label>
 
-        <!-- زر المايكروفون الصوتي -->
-        <button id="ai-mic-btn" type="button" onclick="toggleVoiceRecording()" title="تسجيل صوتي مباشر" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all flex items-center justify-center">
-          <i id="ai-mic-icon" data-lucide="mic" class="w-4 h-4 text-emerald-400"></i>
+        <button id="ai-mic-btn" type="button" onclick="toggleVoiceRecording()" title="تسجيل صوتي مباشر" class="p-2.5 rounded-xl bg-[#0B1D48] hover:bg-[#1D56B8] text-slate-300 transition-all flex items-center justify-center">
+          <i id="ai-mic-icon" data-lucide="mic" class="w-4 h-4 text-[#0099F7]"></i>
         </button>
 
-        <!-- حقل النص -->
-        <input type="text" id="ai-text-input" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="اكتب أو تحدث بالمصري..." class="flex-1 py-2.5 px-3 rounded-xl bg-slate-850 border border-slate-700 text-white text-xs outline-none focus:border-royal-500">
+        <input type="text" id="ai-text-input" onkeydown="if(event.key==='Enter') sendAiMessage()" placeholder="اكتب أو تحدث بالمصري..." class="flex-1 py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white text-xs outline-none focus:border-[#0099F7]">
 
-        <!-- زر الإرسال -->
-        <button onclick="sendAiMessage()" class="p-2.5 rounded-xl bg-royal-700 hover:bg-royal-600 text-white shadow-md transition-all">
+        <button onclick="sendAiMessage()" class="p-2.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white shadow-md transition-all">
           <i data-lucide="send" class="w-4 h-4 rotate-180"></i>
         </button>
       </div>
-      <span id="ai-speech-status" class="text-[10px] text-emerald-400 mt-1 block h-3"></span>
+      <span id="ai-speech-status" class="text-[10px] text-[#0099F7] mt-1 block h-3"></span>
     </div>
   </div>
 
   <!-- 7. نافذة الإعدادات الشاملة (Settings Modal) -->
-  <div id="settings-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl">
-      <div class="p-5 bg-gradient-to-l from-royal-800 to-royal-950 border-b border-slate-800 flex items-center justify-between">
+  <div id="settings-modal" class="fixed inset-0 z-50 bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-[#0F1D3A] border border-[#0099F7]/40 rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl">
+      <div class="p-5 bg-gradient-to-l from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/30 flex items-center justify-between">
         <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i data-lucide="sliders" class="w-5 h-5 text-emerald-400"></i>
+          <i data-lucide="sliders" class="w-5 h-5 text-[#0099F7]"></i>
           <span>إعدادات نظام الفتح الذكي</span>
         </h3>
         <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-white p-1 rounded-xl bg-slate-800/60">
@@ -743,72 +723,67 @@
 
       <div class="p-5 space-y-4 max-h-[75vh] overflow-y-auto custom-scrollbar text-xs">
         
-        <!-- ساعات وفاصل المشوار -->
         <div class="grid grid-cols-3 gap-3">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">بدء العمل</label>
-            <input type="time" id="set-work-start" class="w-full py-2 px-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none">
+            <input type="time" id="set-work-start" class="w-full py-2 px-2.5 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none">
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">نهاية العمل</label>
-            <input type="time" id="set-work-end" class="w-full py-2 px-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none">
+            <input type="time" id="set-work-end" class="w-full py-2 px-2.5 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none">
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">فاصل المشوار (دقيقة)</label>
-            <input type="number" id="set-buffer" min="15" step="15" class="w-full py-2 px-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none">
+            <input type="number" id="set-buffer" min="15" step="15" class="w-full py-2 px-2.5 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none">
           </div>
         </div>
 
-        <!-- وضع قبول الحجوزات من صفحة /book -->
         <div>
           <label class="block font-semibold text-slate-300 mb-1">طريقة قبول حجوزات العملاء (/book)</label>
-          <select id="set-approval-mode" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none">
-            <option value="manual">طلب معلق (Pending) لحين مراجعة وتأكيد صاحب الشركة يدويّاً</option>
+          <select id="set-approval-mode" class="w-full py-2.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none">
+            <option value="manual">طلب معلق (Pending) لحين مراجعة وتأكيد أستاذ سليمان يدويّاً</option>
             <option value="auto">تأكيد تلقائي فوري للموعد في الجدول مباشرة</option>
           </select>
         </div>
 
-        <!-- مفتاح Gemini API للذكاء الاصطناعي -->
         <div>
           <label class="block font-semibold text-slate-300 mb-1">مفتاح Gemini API Key (اختياري)</label>
-          <input type="password" id="set-gemini-key" placeholder="AIzaSy..." class="w-full py-2 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none" dir="ltr">
+          <input type="password" id="set-gemini-key" placeholder="AIzaSy..." class="w-full py-2 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none" dir="ltr">
           <span class="text-[10px] text-slate-400">النظام يحتوي أيضاً على محرك ذكي مدمج للهجة المصرية يعمل حتى بدون مفتاح API.</span>
         </div>
 
-        <!-- قوالب رسائل الواتساب الأربعة -->
         <div class="space-y-3 pt-2">
-          <h4 class="font-bold text-emerald-400 text-xs border-b border-slate-800 pb-1">قوالب رسائل واتساب التلقائية:</h4>
+          <h4 class="font-bold text-[#0099F7] text-xs border-b border-slate-800 pb-1">قوالب رسائل واتساب التلقائية (شركة الفتح للأنظمة الذكية):</h4>
           
           <div>
             <label class="block font-semibold text-slate-300 mb-1">1. قالب تأكيد الحجز:</label>
-            <textarea id="set-tpl-confirm" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none text-[11px]"></textarea>
+            <textarea id="set-tpl-confirm" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none text-[11px]"></textarea>
           </div>
 
           <div>
             <label class="block font-semibold text-slate-300 mb-1">2. قالب التذكير قبل الموعد بساعتين أو بوقت المشوار:</label>
-            <textarea id="set-tpl-reminder" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none text-[11px]"></textarea>
+            <textarea id="set-tpl-reminder" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none text-[11px]"></textarea>
           </div>
 
           <div>
             <label class="block font-semibold text-slate-300 mb-1">3. قالب تعديل الموعد:</label>
-            <textarea id="set-tpl-rescheduled" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none text-[11px]"></textarea>
+            <textarea id="set-tpl-rescheduled" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none text-[11px]"></textarea>
           </div>
 
           <div>
             <label class="block font-semibold text-slate-300 mb-1">4. قالب رسالة الطوارئ وإغلاق اليوم:</label>
-            <textarea id="set-tpl-emergency" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-slate-800 border border-slate-700 text-white outline-none text-[11px]"></textarea>
+            <textarea id="set-tpl-emergency" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 text-white outline-none text-[11px]"></textarea>
           </div>
         </div>
 
-        <!-- أزرار النسخ الاحتياطي وحفظ الإعدادات -->
         <div class="pt-3 border-t border-slate-800 flex items-center justify-between gap-2">
-          <button type="button" onclick="exportDataBackup()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs flex items-center gap-1">
-            <i data-lucide="download" class="w-4 h-4"></i>
+          <button type="button" onclick="exportDataBackup()" class="px-3 py-2 rounded-xl bg-[#0B1D48] hover:bg-[#1D56B8] text-slate-300 font-semibold text-xs flex items-center gap-1 border border-[#0099F7]/30">
+            <i data-lucide="download" class="w-4 h-4 text-[#0099F7]"></i>
             <span>تصدير نسخة احتياطية</span>
           </button>
           <div class="flex gap-2">
-            <button type="button" onclick="closeSettingsModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 font-bold">إلغاء</button>
-            <button type="button" onclick="saveSettingsForm()" class="px-5 py-2 rounded-xl bg-royal-700 hover:bg-royal-600 text-white font-bold shadow-md">حفظ الإعدادات</button>
+            <button type="button" onclick="closeSettingsModal()" class="px-4 py-2 rounded-xl bg-[#0B1D48] text-slate-300 font-bold">إلغاء</button>
+            <button type="button" onclick="saveSettingsForm()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] text-white font-bold shadow-md">حفظ الإعدادات</button>
           </div>
         </div>
 
@@ -818,7 +793,6 @@
 
   <!-- صوت المنبهات والويب أوديو Web Audio API -->
   <script>
-    // إنشاء سياق صوتي لتوليد الأصوات الحقيقية بدون الاعتماد على ملفات mp3 خارجية قد تتعطل
     let audioCtx = null;
     let alarmInterval = null;
 
@@ -832,15 +806,14 @@
       return audioCtx;
     }
 
-    // تشغيل نغمة هادئة راقية (للمواعيد العادية والإشعارات)
     function playSoftBeep() {
       try {
         const ctx = getAudioContext();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15); // A5
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
         gain.gain.setValueAtTime(0.2, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
         osc.connect(gain);
@@ -852,7 +825,6 @@
       }
     }
 
-    // تشغيل منبه قوي متكرر (للمواعيد المهمة جداً وحالات الطوارئ)
     function startUrgentAlarmSound() {
       stopAlarmSound();
       const playBeepPair = () => {
@@ -899,13 +871,13 @@
 
   <!-- السكريبت الرئيسي لإدارة البيانات والواجهات والذكاء الاصطناعي -->
   <script>
-    // الحالة العامة للتطبيق
     let appState = {
       appointments: [],
       clients: [],
       technicians: [],
       settings: {
         company_name: "شركة الفتح للأنظمة الذكية",
+        company_name_en: "Al-Fateh Smart Systems Company",
         company_phone: "01000000000",
         work_start_time: "09:00",
         work_end_time: "21:00",
@@ -915,13 +887,13 @@
         theme_mode: "dark",
         emergency_closed_date: "",
         whatsapp_templates: {
-          confirmation: "مرحباً بك {client_name}، نؤكد حجز موعد {type} مع شركة الفتح للأنظمة الذكية يوم {date} في تمام الساعة {time}. العنوان: {address}.",
+          confirmation: "مرحباً بك {client_name}، نؤكد حجز موعد {type} مع شركة الفتح للأنظمة الذكية (Al-Fateh Smart Systems) يوم {date} في تمام الساعة {time}. العنوان: {address}.",
           reminder_2h: "تذكير من شركة الفتح للأنظمة الذكية: موعدكم المحدد لـ {type} اليوم في تمام الساعة {time}. يسعدنا خدمتكم!",
           rescheduled: "عزيزنا العميل {client_name}، نود إحاطتكم بأنه تم تعديل موعد {type} ليصبح يوم {date} الساعة {time}. نتمنى لكم يوماً سعيداً - شركة الفتح للأنظمة الذكية.",
           emergency: "عزيزنا العميل {client_name}، نعتذر بشدة لحدوث ظرف طارئ خارج عن إرادتنا استوجب إغلاق حجوزات اليوم. سنتواصل معكم فوراً لتحديد موعد بديل. شركة الفتح للأنظمة الذكية."
         }
       },
-      currentView: 'day', // 'day', 'week', 'month', 'agenda'
+      currentView: 'day',
       selectedDate: new Date().toISOString().split('T')[0],
       draggedAptId: null,
       isRecordingVoice: false,
@@ -929,16 +901,15 @@
       isOffline: false
     };
 
-    // خريطة مسميات وتنسيقات أنواع المواعيد الخمسة
+    // خريطة مسميات وتنسيقات أنواع المواعيد الخمسة المتباينة بدقة
     const TYPE_CONFIG = {
-      inspection: { label: 'معاينة', color: 'blue', bg: 'bg-blue-600', text: 'text-blue-400', border: 'border-blue-500', icon: '🔍' },
-      installation: { label: 'تركيب', color: 'emerald', bg: 'bg-emerald-600', text: 'text-emerald-400', border: 'border-emerald-500', icon: '🛠️' },
-      maintenance: { label: 'صيانة', color: 'amber', bg: 'bg-amber-600', text: 'text-amber-400', border: 'border-amber-500', icon: '⚙️' },
-      visit: { label: 'زيارة', color: 'purple', bg: 'bg-purple-600', text: 'text-purple-400', border: 'border-purple-500', icon: '🤝' },
-      private: { label: 'موعد خاص', color: 'slate', bg: 'bg-slate-700', text: 'text-slate-400', border: 'border-slate-600', icon: '🔒' }
+      inspection: { label: 'معاينة', color: 'blue', bg: 'bg-[#0099F7]', text: 'text-[#0099F7]', border: 'border-[#0099F7]', icon: '🔍' },
+      installation: { label: 'تركيب', color: 'emerald', bg: 'bg-[#10B981]', text: 'text-[#10B981]', border: 'border-[#10B981]', icon: '🛠️' },
+      maintenance: { label: 'صيانة', color: 'amber', bg: 'bg-[#F59E0B]', text: 'text-[#F59E0B]', border: 'border-[#F59E0B]', icon: '⚙️' },
+      visit: { label: 'زيارة', color: 'purple', bg: 'bg-[#8B5CF6]', text: 'text-[#8B5CF6]', border: 'border-[#8B5CF6]', icon: '🤝' },
+      private: { label: 'موعد خاص', color: 'slate', bg: 'bg-[#64748B]', text: 'text-[#64748B]', border: 'border-[#64748B]', icon: '🔒' }
     };
 
-    // تشغيل النظام فور تحميل الصفحة
     window.addEventListener('DOMContentLoaded', async () => {
       lucide.createIcons();
       initTheme();
@@ -949,9 +920,6 @@
       checkAreaBatching();
     });
 
-    // -----------------------------------------------------------------
-    // 1. مزامنة البيانات مع الـ REST APIs وتخزين LocalStorage / IndexedDB
-    // -----------------------------------------------------------------
     async function fetchAllData() {
       try {
         const [aptRes, setRes, cliRes] = await Promise.all([
@@ -964,7 +932,6 @@
           appState.appointments = await aptRes.json();
           localStorage.setItem('alfath_appointments', JSON.stringify(appState.appointments));
         } else {
-          // استرجاع من الكاش المحلي أوفلاين
           const localApts = localStorage.getItem('alfath_appointments');
           if (localApts) appState.appointments = JSON.parse(localApts);
         }
@@ -988,9 +955,7 @@
       updatePostponedBadge();
     }
 
-    // حفظ موعد إلى السيرفر والكاش
     async function saveAppointmentToBackend(aptData, isNew = false) {
-      // تحديث محلي فوري (Optimistic Update)
       if (isNew) {
         appState.appointments.push(aptData);
       } else {
@@ -1002,7 +967,6 @@
       updatePostponedBadge();
       checkAreaBatching();
 
-      // الإرسال للسيرفر
       try {
         const method = isNew ? 'POST' : 'PUT';
         await fetch('/api/appointments', {
@@ -1015,7 +979,6 @@
       }
     }
 
-    // حذف موعد
     async function deleteAppointmentFromBackend(id) {
       appState.appointments = appState.appointments.filter(a => a.id !== id);
       localStorage.setItem('alfath_appointments', JSON.stringify(appState.appointments));
@@ -1034,19 +997,16 @@
       }
     }
 
-    // -----------------------------------------------------------------
-    // 2. إدارة العروض الأربعة للتقويم (Calendar Views)
-    // -----------------------------------------------------------------
     function switchCalendarView(view) {
       appState.currentView = view;
       ['day', 'week', 'month', 'agenda'].forEach(v => {
         const btn = document.getElementById(`view-${v}`);
         const cont = document.getElementById(`view-container-${v}`);
         if (v === view) {
-          btn.className = 'px-3 py-1.5 rounded-xl bg-royal-700 text-white shadow-sm transition-all';
+          btn.className = 'px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] text-white shadow-sm transition-all';
           cont.classList.remove('hidden');
         } else {
-          btn.className = 'px-3 py-1.5 rounded-xl text-slate-400 hover:text-white transition-all';
+          btn.className = 'px-3 py-1.5 rounded-xl text-slate-300 hover:text-white transition-all';
           cont.classList.add('hidden');
         }
       });
@@ -1094,19 +1054,13 @@
       checkAreaBatching();
     }
 
-    // -----------------------------------------------------------------
-    // أ) عرض اليوم (Day View) مع السحب والإفلات وفواصل المشوار
-    // -----------------------------------------------------------------
     function renderDayView() {
       const container = document.getElementById('day-slots-container');
       container.innerHTML = '';
 
       const dayApts = appState.appointments.filter(a => a.date === appState.selectedDate && a.status !== 'cancelled' && a.status !== 'postponed');
-
-      // ترتيب المواعيد بالساعة
       dayApts.sort((a, b) => (a.time || '').localeCompare(b.time || ''));
 
-      // ساعات العمل من 08:00 إلى 22:00
       const startHour = 8;
       const endHour = 22;
 
@@ -1114,7 +1068,6 @@
         const timeStr = `${h.toString().padStart(2, '0')}:00`;
         const timeLabel = h < 12 ? `${h}:00 ص` : (h === 12 ? '12:00 ظ' : `${h - 12}:00 م`);
 
-        // البحث عن مواعيد تبدأ في هذه الساعة
         const matchingApts = dayApts.filter(a => {
           if (!a.time) return false;
           const aptHour = parseInt(a.time.split(':')[0], 10);
@@ -1122,11 +1075,10 @@
         });
 
         const slotRow = document.createElement('div');
-        slotRow.className = 'slot-drop-zone flex items-stretch gap-3 min-h-[72px] p-2 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all';
+        slotRow.className = 'slot-drop-zone flex items-stretch gap-3 min-h-[72px] p-2 rounded-2xl bg-[#0F1D3A]/60 border border-[#0099F7]/15 hover:border-[#0099F7]/40 transition-all';
         slotRow.dataset.time = timeStr;
         slotRow.dataset.date = appState.selectedDate;
 
-        // أحداث السحب والإفلات Drag and Drop
         slotRow.ondragover = (e) => {
           e.preventDefault();
           slotRow.classList.add('drag-over');
@@ -1140,13 +1092,11 @@
           handleDropAppointment(slotRow.dataset.date, slotRow.dataset.time);
         };
 
-        // عمود الساعة
         const timeCol = document.createElement('div');
-        timeCol.className = 'w-16 sm:w-20 shrink-0 flex flex-col items-center justify-center border-l border-slate-800 pl-2 text-xs font-bold text-slate-400';
-        timeCol.innerHTML = `<span>${timeLabel}</span><span class="text-[10px] text-slate-500 font-normal">${timeStr}</span>`;
+        timeCol.className = 'w-16 sm:w-20 shrink-0 flex flex-col items-center justify-center border-l border-[#0099F7]/20 pl-2 text-xs font-bold text-slate-300';
+        timeCol.innerHTML = `<span>${timeLabel}</span><span class="text-[10px] text-slate-400 font-normal">${timeStr}</span>`;
         slotRow.appendChild(timeCol);
 
-        // عمود المحتوى (المواعيد أو الوقت الشاغر)
         const contentCol = document.createElement('div');
         contentCol.className = 'flex-1 flex flex-col gap-2 justify-center';
 
@@ -1156,11 +1106,10 @@
             contentCol.appendChild(card);
           });
         } else {
-          // وقت شاغر مع زر إضافة سريع
           contentCol.innerHTML = `
-            <div class="flex items-center justify-between text-xs text-slate-500 py-2 px-3 border border-dashed border-slate-800 rounded-xl hover:border-royal-600/40 transition-all group">
+            <div class="flex items-center justify-between text-xs text-slate-400 py-2 px-3 border border-dashed border-[#0099F7]/20 rounded-xl hover:border-[#0099F7]/50 transition-all group">
               <span class="text-[11px]">وقت شاغر متاح للحجز</span>
-              <button onclick="openAppointmentModal('${appState.selectedDate}', '${timeStr}')" class="opacity-0 group-hover:opacity-100 px-2.5 py-1 rounded-lg bg-royal-800/80 hover:bg-royal-700 text-white text-[11px] font-bold flex items-center gap-1 transition-all">
+              <button onclick="openAppointmentModal('${appState.selectedDate}', '${timeStr}')" class="opacity-0 group-hover:opacity-100 px-2.5 py-1 rounded-lg bg-[#0099F7]/80 hover:bg-[#0099F7] text-white text-[11px] font-bold flex items-center gap-1 transition-all">
                 <i data-lucide="plus" class="w-3.5 h-3.5"></i>
                 <span>حجز هذا الوقت</span>
               </button>
@@ -1173,7 +1122,6 @@
       }
     }
 
-    // إنشاء بطاقة موعد تفاعلية قابلة للسحب والنقر
     function createAppointmentCard(apt) {
       const cfg = TYPE_CONFIG[apt.type] || TYPE_CONFIG.inspection;
       const isUrgent = apt.priority === 'urgent';
@@ -1182,10 +1130,9 @@
 
       const card = document.createElement('div');
       card.draggable = true;
-      card.className = `draggable-card relative p-3 sm:p-4 rounded-2xl border ${cfg.border}/60 bg-gradient-to-r from-slate-900 to-slate-850 hover:border-emerald-400 transition-all shadow-md group`;
+      card.className = `draggable-card relative p-3 sm:p-4 rounded-2xl border ${cfg.border}/60 bg-gradient-to-r from-[#0F1D3A] to-[#122347] hover:border-[#0099F7] transition-all shadow-md group`;
       card.dataset.id = apt.id;
 
-      // أحداث السحب
       card.ondragstart = (e) => {
         appState.draggedAptId = apt.id;
         e.dataTransfer.setData('text/plain', apt.id);
@@ -1195,16 +1142,14 @@
         card.classList.remove('opacity-50', 'scale-95');
       };
 
-      // النقر لفتح بطاقة العميل الذكي
       card.onclick = (e) => {
         if (!e.target.closest('button') && !e.target.closest('a')) {
           openSmartCardModal(apt);
         }
       };
 
-      // مؤشر وقت المشوار المسبق (Travel Buffer Indicator)
       const bufferHtml = buffer > 0 ? `
-        <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-royal-950/70 border border-royal-700/40 text-[10px] text-emerald-300 mb-1.5">
+        <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#0B1D48]/80 border border-[#0099F7]/30 text-[10px] text-[#67C5FF] mb-1.5">
           <span>🚗</span> وقت تحرك محمي: ${buffer} دقيقة قبل وبعد
         </div>
       ` : '';
@@ -1222,15 +1167,14 @@
                 ${isPending ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-950 border border-amber-600 text-amber-300">⏳ طلب معلق</span>' : ''}
                 <span class="text-xs font-black text-white">${apt.client_name}</span>
               </div>
-              <h4 class="text-xs font-bold text-slate-200 mt-1">${apt.title}</h4>
-              <p class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-1">
+              <h4 class="text-xs font-bold text-slate-100 mt-1">${apt.title}</h4>
+              <p class="text-[11px] text-slate-300 mt-0.5 flex items-center gap-1">
                 <span>📍 ${apt.area || 'القاهرة'}</span>
-                ${apt.address ? `<span class="text-slate-500">• ${apt.address}</span>` : ''}
+                ${apt.address ? `<span class="text-slate-400">• ${apt.address}</span>` : ''}
               </p>
             </div>
           </div>
 
-          <!-- أزرار الإجراءات السريعة على البطاقة -->
           <div class="flex items-center gap-1 shrink-0">
             ${apt.phone ? `
               <a href="https://wa.me/2${apt.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(getFormattedWaMessage('reminder_2h', apt))}" target="_blank" title="إرسال واتساب" class="p-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white transition-all">
@@ -1241,16 +1185,16 @@
               </a>
             ` : ''}
             ${apt.map_link ? `
-              <a href="${apt.map_link}" target="_blank" title="افتح الخريطة الآن" class="p-2 rounded-xl bg-amber-600/20 hover:bg-amber-600 text-amber-400 hover:text-white transition-all">
+              <a href="${apt.map_link}" target="_blank" title="افتح الخريطة الآن" class="p-2 rounded-xl bg-[#0099F7]/20 hover:bg-[#0099F7] text-[#0099F7] hover:text-white transition-all">
                 <i data-lucide="navigation" class="w-4 h-4"></i>
               </a>
             ` : ''}
           </div>
         </div>
 
-        <div class="mt-2 pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+        <div class="mt-2 pt-2 border-t border-[#0099F7]/15 flex items-center justify-between text-[11px] text-slate-300">
           <div class="flex items-center gap-2">
-            <span class="font-bold text-emerald-400">🕒 ${apt.time}</span>
+            <span class="font-bold text-[#0099F7]">🕒 ${apt.time}</span>
             <span>(${apt.duration || 60} دقيقة)</span>
           </div>
           ${bufferHtml}
@@ -1260,7 +1204,6 @@
       return card;
     }
 
-    // معالجة إفلات الموعد (Drag & Drop Handler)
     async function handleDropAppointment(newDate, newTime) {
       const aptId = appState.draggedAptId;
       if (!aptId) return;
@@ -1271,7 +1214,6 @@
       const oldTime = apt.time;
       const oldDate = apt.date;
 
-      // تحديث الموعد
       apt.date = newDate;
       apt.time = newTime;
       if (apt.status === 'postponed') apt.status = 'confirmed';
@@ -1279,21 +1221,16 @@
       playSoftBeep();
       await saveAppointmentToBackend(apt, false);
 
-      // إظهار نافذة السؤال الفوري لتجهيز رسالة واتساب
       openDragConfirmModal(apt, oldDate, oldTime, newDate, newTime);
       appState.draggedAptId = null;
     }
 
-    // -----------------------------------------------------------------
-    // ب) عرض الأسبوع (Week View)
-    // -----------------------------------------------------------------
     function renderWeekView() {
       const container = document.getElementById('week-grid-container');
       container.innerHTML = '';
 
       const baseDate = new Date(appState.selectedDate + 'T00:00:00');
-      // بداية الأسبوع (السبت)
-      const dayOfWeek = baseDate.getDay(); // 6 = Saturday, 0 = Sunday
+      const dayOfWeek = baseDate.getDay();
       const diffToSaturday = (dayOfWeek + 1) % 7; 
       const startOfWeek = new Date(baseDate);
       startOfWeek.setDate(baseDate.getDate() - diffToSaturday);
@@ -1310,9 +1247,8 @@
         const dayApts = appState.appointments.filter(a => a.date === dateStr && a.status !== 'cancelled' && a.status !== 'postponed');
 
         const col = document.createElement('div');
-        col.className = `p-3 rounded-2xl border ${isSelected ? 'border-royal-500 bg-royal-950/20' : 'border-slate-800 bg-slate-900/60'} flex flex-col gap-2 min-h-[300px]`;
+        col.className = `p-3 rounded-2xl border ${isSelected ? 'border-[#0099F7] bg-[#0099F7]/10' : 'border-[#0099F7]/20 bg-[#0F1D3A]/60'} flex flex-col gap-2 min-h-[300px]`;
         
-        // أحداث الإسقاط لليوم
         col.ondragover = (e) => { e.preventDefault(); col.classList.add('drag-over'); };
         col.ondragleave = () => { col.classList.remove('drag-over'); };
         col.ondrop = (e) => {
@@ -1322,15 +1258,15 @@
         };
 
         col.innerHTML = `
-          <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div class="flex items-center justify-between pb-2 border-b border-[#0099F7]/20">
             <div>
               <span class="block font-bold text-white text-xs">${daysOfWeekNames[i]}</span>
-              <span class="text-[10px] text-slate-400">${dateStr}</span>
+              <span class="text-[10px] text-slate-300">${dateStr}</span>
             </div>
-            ${isToday ? '<span class="px-2 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black">اليوم</span>' : `<span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 text-slate-300 font-bold">${dayApts.length}</span>`}
+            ${isToday ? '<span class="px-2 py-0.5 rounded-full bg-[#0099F7] text-white text-[10px] font-black">اليوم</span>' : `<span class="px-1.5 py-0.5 rounded text-[10px] bg-[#0B1D48] text-slate-300 font-bold">${dayApts.length}</span>`}
           </div>
           <div class="flex-1 space-y-2 overflow-y-auto custom-scrollbar max-h-96">
-            ${dayApts.length === 0 ? '<div class="text-center py-8 text-slate-600 text-xs">لا توجد مواعيد</div>' : ''}
+            ${dayApts.length === 0 ? '<div class="text-center py-8 text-slate-500 text-xs">لا توجد مواعيد</div>' : ''}
           </div>
         `;
 
@@ -1339,7 +1275,7 @@
           const cfg = TYPE_CONFIG[apt.type] || TYPE_CONFIG.inspection;
           const item = document.createElement('div');
           item.draggable = true;
-          item.className = `draggable-card p-2 rounded-xl border ${cfg.border}/60 bg-slate-850 hover:border-emerald-400 text-xs transition-all`;
+          item.className = `draggable-card p-2 rounded-xl border ${cfg.border}/60 bg-[#0B1D48] hover:border-[#0099F7] text-xs transition-all`;
           item.ondragstart = (e) => {
             appState.draggedAptId = apt.id;
             e.dataTransfer.setData('text/plain', apt.id);
@@ -1360,9 +1296,6 @@
       }
     }
 
-    // -----------------------------------------------------------------
-    // ج) عرض الشهر (Month View)
-    // -----------------------------------------------------------------
     function renderMonthView() {
       const container = document.getElementById('month-grid-container');
       container.innerHTML = '';
@@ -1372,16 +1305,14 @@
       const lastDay = new Date(year, month, 0);
       const totalDays = lastDay.getDate();
 
-      // رؤوس أيام الأسبوع
       const dayNames = ['سبت', 'أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة'];
       dayNames.forEach(name => {
         const h = document.createElement('div');
-        h.className = 'text-center text-xs font-bold text-slate-400 py-1.5 bg-slate-850 rounded-xl';
+        h.className = 'text-center text-xs font-bold text-slate-300 py-1.5 bg-[#0F1D3A] rounded-xl border border-[#0099F7]/20';
         h.textContent = name;
         container.appendChild(h);
       });
 
-      // إزاحة اليوم الأول (السبت = 0)
       const startDayIndex = (firstDay.getDay() + 1) % 7;
       for (let i = 0; i < startDayIndex; i++) {
         const emptyCell = document.createElement('div');
@@ -1396,7 +1327,7 @@
         const isSelected = dateStr === appState.selectedDate;
 
         const cell = document.createElement('div');
-        cell.className = `p-2 min-h-[75px] rounded-xl border cursor-pointer transition-all ${isSelected ? 'border-royal-500 bg-royal-950/30' : 'border-slate-800 bg-slate-900/60 hover:border-slate-700'}`;
+        cell.className = `p-2 min-h-[75px] rounded-xl border cursor-pointer transition-all ${isSelected ? 'border-[#0099F7] bg-[#0099F7]/15' : 'border-[#0099F7]/20 bg-[#0F1D3A]/60 hover:border-[#0099F7]/50'}`;
         cell.onclick = () => {
           appState.selectedDate = dateStr;
           switchCalendarView('day');
@@ -1404,8 +1335,8 @@
 
         cell.innerHTML = `
           <div class="flex items-center justify-between text-xs font-bold">
-            <span class="${isToday ? 'px-1.5 py-0.5 rounded-full bg-emerald-500 text-slate-950' : 'text-slate-300'}">${day}</span>
-            ${dayApts.length > 0 ? `<span class="text-[10px] text-emerald-400 font-extrabold">${dayApts.length} موعد</span>` : ''}
+            <span class="${isToday ? 'px-1.5 py-0.5 rounded-full bg-[#0099F7] text-white' : 'text-slate-300'}">${day}</span>
+            ${dayApts.length > 0 ? `<span class="text-[10px] text-[#0099F7] font-extrabold">${dayApts.length} موعد</span>` : ''}
           </div>
           <div class="mt-1 space-y-1">
             ${dayApts.slice(0, 2).map(a => {
@@ -1419,14 +1350,10 @@
       }
     }
 
-    // -----------------------------------------------------------------
-    // د) عرض قائمة المهام السريعة (Agenda View)
-    // -----------------------------------------------------------------
     function renderAgendaView() {
       const container = document.getElementById('agenda-list-container');
       container.innerHTML = '';
 
-      // جلب جميع المواعيد المستقبلية بدءاً من تاريخ اليوم
       const activeApts = appState.appointments.filter(a => a.status !== 'cancelled');
       activeApts.sort((a, b) => `${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
 
@@ -1435,13 +1362,12 @@
         return;
       }
 
-      // تجميع حسب التاريخ
       let lastDate = '';
       activeApts.forEach(apt => {
         if (apt.date !== lastDate) {
           lastDate = apt.date;
           const dateHeader = document.createElement('div');
-          dateHeader.className = 'sticky top-0 z-10 py-1.5 px-3 rounded-xl bg-slate-800/90 backdrop-blur-md text-xs font-bold text-emerald-400 border border-slate-700 flex items-center justify-between my-2';
+          dateHeader.className = 'sticky top-0 z-10 py-1.5 px-3 rounded-xl bg-[#0F1D3A]/90 backdrop-blur-md text-xs font-bold text-[#0099F7] border border-[#0099F7]/30 flex items-center justify-between my-2';
           dateHeader.innerHTML = `<span>📅 ${apt.date}</span><span>${apt.date === new Date().toISOString().split('T')[0] ? 'اليوم' : ''}</span>`;
           container.appendChild(dateHeader);
         }
@@ -1451,16 +1377,12 @@
       });
     }
 
-    // -----------------------------------------------------------------
-    // 3. ذكاء العمل الميداني وتجميع المناطق (Field Operations & Batching)
-    // -----------------------------------------------------------------
     function checkAreaBatching() {
       const banner = document.getElementById('area-batching-banner');
       const text = document.getElementById('area-batching-text');
 
       const dayApts = appState.appointments.filter(a => a.date === appState.selectedDate && a.status !== 'cancelled' && a.status !== 'postponed');
 
-      // حساب تكرار المناطق
       const areaCounts = {};
       dayApts.forEach(a => {
         if (a.area && a.area !== 'المقر الرئيسي' && a.area !== 'أخرى') {
@@ -1478,9 +1400,6 @@
       }
     }
 
-    // -----------------------------------------------------------------
-    // 4. سلة المؤجلات الذكية وملء الفراغات (Postponed Drawer & Smart Fill)
-    // -----------------------------------------------------------------
     function updatePostponedBadge() {
       const postponed = appState.appointments.filter(a => a.status === 'postponed' || a.priority === 'postponed');
       const count = postponed.length;
@@ -1499,7 +1418,7 @@
         const cfg = TYPE_CONFIG[apt.type] || TYPE_CONFIG.inspection;
         const item = document.createElement('div');
         item.draggable = true;
-        item.className = 'draggable-card p-3 rounded-2xl border border-amber-600/40 bg-slate-850 hover:border-amber-400 space-y-2 transition-all';
+        item.className = 'draggable-card p-3 rounded-2xl border border-amber-500/40 bg-[#0B1D48] hover:border-amber-400 space-y-2 transition-all';
         item.ondragstart = (e) => {
           appState.draggedAptId = apt.id;
           e.dataTransfer.setData('text/plain', apt.id);
@@ -1513,7 +1432,7 @@
           <div class="text-[11px] text-slate-300 font-medium">${apt.title}</div>
           <div class="text-[10px] text-slate-400">📍 ${apt.area || 'القاهرة'} ${apt.phone ? `• ${apt.phone}` : ''}</div>
           <div class="flex gap-2 pt-1">
-            <button onclick="restorePostponedAppointment('${apt.id}')" class="flex-1 py-1.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold transition-all">
+            <button onclick="restorePostponedAppointment('${apt.id}')" class="flex-1 py-1.5 px-2 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] text-white text-[11px] font-bold transition-all shadow-md">
               تسكين في جدول اليوم
             </button>
             <button onclick="deleteAppointmentFromBackend('${apt.id}')" class="p-1.5 rounded-xl bg-slate-800 text-slate-400 hover:text-rose-400">
@@ -1531,7 +1450,6 @@
       drawer.classList.toggle('-translate-x-full');
     }
 
-    // اقتراح ملء الفراغ الذكي
     function suggestPostponedFill() {
       const postponed = appState.appointments.filter(a => a.status === 'postponed' || a.priority === 'postponed');
       const sugText = document.getElementById('smart-fill-suggestion-text');
@@ -1541,17 +1459,15 @@
         return;
       }
 
-      // البحث عن المواعيد في نفس منطقة مواعيد اليوم لتوفير المشوار
       const todayApts = appState.appointments.filter(a => a.date === appState.selectedDate && a.status !== 'cancelled' && a.status !== 'postponed');
       const todayAreas = todayApts.map(a => a.area);
 
-      // تفضيل موعد في نفس المنطقة
       let bestMatch = postponed.find(p => todayAreas.includes(p.area));
       if (!bestMatch) bestMatch = postponed[0];
 
       sugText.innerHTML = `
         🎯 <strong>اقتراح ملء الفراغ:</strong> ننصح بتسكين موعد <strong>(${bestMatch.client_name})</strong> - [${bestMatch.type}] في منطقة <strong>(${bestMatch.area})</strong> اليوم لتقاربه الجغرافي! 
-        <button onclick="restorePostponedAppointment('${bestMatch.id}')" class="inline-block mt-1 px-2 py-0.5 rounded bg-emerald-600 text-white font-bold text-[10px]">اضغط هنا للتسكين فوراً</button>
+        <button onclick="restorePostponedAppointment('${bestMatch.id}')" class="inline-block mt-1 px-2 py-0.5 rounded bg-[#0099F7] text-white font-bold text-[10px]">اضغط هنا للتسكين فوراً</button>
       `;
     }
 
@@ -1568,9 +1484,6 @@
       alert(`تم تسكين موعد (${apt.client_name}) بنجاح في جدول يوم ${appState.selectedDate}`);
     }
 
-    // -----------------------------------------------------------------
-    // 5. زر الطوارئ وإغلاق اليوم (Emergency Close Day)
-    // -----------------------------------------------------------------
     function openEmergencyModal() {
       document.getElementById('emergency-modal').classList.remove('hidden');
     }
@@ -1584,7 +1497,6 @@
         const res = await fetch('/api/emergency/close-today', { method: 'POST' });
         const data = await res.json();
         
-        // تحديث المواعيد محلياً
         appState.appointments.forEach(a => {
           if (a.date === data.date && a.status !== 'cancelled') {
             a.status = 'postponed';
@@ -1595,12 +1507,11 @@
         renderCurrentView();
         updatePostponedBadge();
 
-        // عرض قائمة العملاء مع رسائل الاعتذار
         const cont = document.getElementById('emergency-clients-container');
         document.getElementById('emergency-actions').classList.add('hidden');
 
         cont.innerHTML = `
-          <div class="p-3 bg-emerald-950/60 border border-emerald-600/40 rounded-xl text-emerald-300 font-bold text-xs mb-2">
+          <div class="p-3 bg-[#0B1D48] border border-[#0099F7]/40 rounded-xl text-[#0099F7] font-bold text-xs mb-2">
             ✓ تم إغلاق اليوم بنجاح ونقل (${data.affected_count}) موعد لسلة المؤجلات. إليك رسائل الاعتذار الجاهزة لإرسالها للعملاء:
           </div>
         `;
@@ -1610,13 +1521,13 @@
         } else {
           data.clients.forEach(c => {
             const row = document.createElement('div');
-            row.className = 'p-3 rounded-xl bg-slate-850 border border-slate-800 space-y-1.5';
+            row.className = 'p-3 rounded-xl bg-[#0B1D48] border border-[#0099F7]/30 space-y-1.5';
             row.innerHTML = `
               <div class="flex items-center justify-between font-bold text-white">
                 <span>${c.client_name} (${c.time})</span>
                 <span class="text-slate-400">${c.area || ''}</span>
               </div>
-              <p class="text-[11px] text-slate-300 bg-slate-900 p-2 rounded-lg border border-slate-800">${c.suggested_message}</p>
+              <p class="text-[11px] text-slate-300 bg-[#070E20] p-2 rounded-lg border border-slate-800">${c.suggested_message}</p>
               <div class="pt-1 flex justify-end">
                 <a href="${c.whatsapp_link}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1">
                   <span>💬</span> إرسال الاعتذار عبر واتساب
@@ -1632,9 +1543,6 @@
       }
     }
 
-    // -----------------------------------------------------------------
-    // 6. بطاقة العميل الذكي (Client Smart Card Modal)
-    // -----------------------------------------------------------------
     function openSmartCardModal(apt) {
       const cfg = TYPE_CONFIG[apt.type] || TYPE_CONFIG.inspection;
       const modal = document.getElementById('client-modal');
@@ -1651,14 +1559,12 @@
       document.getElementById('smart-card-notes').textContent = apt.notes || 'لا توجد ملاحظات فنية مسجلة.';
       document.getElementById('smart-card-fee').textContent = `${apt.fee || 0} ج.م`;
 
-      // أزرار الهاتف والواتساب والخريطة
       const phoneClean = (apt.phone || '').replace(/[^0-9]/g, '');
       document.getElementById('smart-card-call-btn').href = `tel:${phoneClean}`;
       const waMsg = getFormattedWaMessage('confirmation', apt);
       document.getElementById('smart-card-whatsapp-btn').href = `https://wa.me/2${phoneClean}?text=${encodeURIComponent(waMsg)}`;
       document.getElementById('smart-card-map-btn').href = apt.map_link || `https://maps.google.com/?q=${encodeURIComponent((apt.area || '') + ' ' + (apt.address || ''))}`;
 
-      // سجل المواعيد السابقة لنفس العميل
       const historyCont = document.getElementById('smart-card-history');
       historyCont.innerHTML = '';
       const previousApts = appState.appointments.filter(a => a.phone && a.phone === apt.phone && a.id !== apt.id);
@@ -1668,7 +1574,7 @@
         previousApts.forEach(p => {
           const pCfg = TYPE_CONFIG[p.type] || TYPE_CONFIG.inspection;
           historyCont.innerHTML += `
-            <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-[11px]">
+            <div class="flex items-center justify-between p-1.5 rounded-lg bg-[#070E20] border border-[#0099F7]/20 text-[11px]">
               <span>📅 ${p.date} (${p.time}) - ${p.title}</span>
               <span class="${pCfg.text} font-bold">${pCfg.label}</span>
             </div>
@@ -1676,7 +1582,6 @@
         });
       }
 
-      // أزرار التعديل والتأجيل والحذف
       document.getElementById('smart-card-edit-btn').onclick = () => {
         closeSmartCardModal();
         editAppointment(apt);
@@ -1701,9 +1606,6 @@
       document.getElementById('client-modal').classList.add('hidden');
     }
 
-    // -----------------------------------------------------------------
-    // 7. إضافة وتعديل موعد (Appointment Form Modal)
-    // -----------------------------------------------------------------
     function openAppointmentModal(date = null, time = null) {
       document.getElementById('apt-form').reset();
       document.getElementById('form-apt-id').value = '';
@@ -1772,9 +1674,6 @@
       playSoftBeep();
     }
 
-    // -----------------------------------------------------------------
-    // 8. تأكيد السحب والإفلات وتجهيز واتساب (Drag Confirm Modal)
-    // -----------------------------------------------------------------
     function openDragConfirmModal(apt, oldDate, oldTime, newDate, newTime) {
       const modal = document.getElementById('drag-confirm-modal');
       document.getElementById('drag-confirm-text').textContent = `تم نقل موعد (${apt.client_name}) من ${oldDate} الساعة ${oldTime} إلى ${newDate} الساعة ${newTime}.`;
@@ -1802,9 +1701,6 @@
         .replace('{address}', (apt.area || '') + ' - ' + (apt.address || ''));
     }
 
-    // -----------------------------------------------------------------
-    // 9. المساعد الذكي AI (صوت، صورة، كتابة مع اللهجة المصرية)
-    // -----------------------------------------------------------------
     function toggleAiDrawer() {
       const drawer = document.getElementById('ai-drawer');
       drawer.classList.toggle('translate-x-full');
@@ -1823,7 +1719,6 @@
       input.value = '';
       appendAiChatMessage('user', prompt);
 
-      // إضافة مؤشر كتابة
       const typingId = appendAiChatMessage('bot', 'جارٍ التفكير ومعالجة الأمر...');
 
       try {
@@ -1834,11 +1729,9 @@
         });
         const data = await res.json();
         
-        // إزالة مؤشر الكتابة وإظهار الرد
         document.getElementById(typingId)?.remove();
         appendAiChatMessage('bot', data.reply);
 
-        // إذا حدث إجراء إضافة أو ترحيل، نعيد تحميل المواعيد فوراً
         if (data.action) {
           await fetchAllData();
           renderCurrentView();
@@ -1858,7 +1751,7 @@
 
       const div = document.createElement('div');
       div.id = msgId;
-      div.className = `p-3 rounded-2xl max-w-[88%] text-xs leading-relaxed ${isUser ? 'mr-auto bg-royal-700 text-white rounded-br-none' : 'ml-auto bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-none'}`;
+      div.className = `p-3 rounded-2xl max-w-[88%] text-xs leading-relaxed ${isUser ? 'mr-auto bg-[#0099F7] text-white rounded-br-none shadow-md' : 'ml-auto bg-[#0B1D48] text-slate-200 border border-[#0099F7]/30 rounded-bl-none'}`;
       div.textContent = text;
 
       cont.appendChild(div);
@@ -1866,7 +1759,6 @@
       return msgId;
     }
 
-    // التعرف على الصوت المباشر (Web Speech Recognition)
     function toggleVoiceRecording() {
       const micBtn = document.getElementById('ai-mic-btn');
       const status = document.getElementById('ai-speech-status');
@@ -1882,18 +1774,18 @@
         if (appState.speechRecognition) appState.speechRecognition.stop();
         appState.isRecordingVoice = false;
         micBtn.classList.remove('bg-rose-600', 'text-white', 'animate-pulse');
-        micBtn.classList.add('bg-slate-800');
+        micBtn.classList.add('bg-[#0B1D48]');
         status.textContent = '';
         return;
       }
 
       appState.speechRecognition = new SpeechRec();
-      appState.speechRecognition.lang = 'ar-EG'; // اللهجة المصرية
+      appState.speechRecognition.lang = 'ar-EG';
       appState.speechRecognition.interimResults = false;
 
       appState.speechRecognition.onstart = () => {
         appState.isRecordingVoice = true;
-        micBtn.classList.remove('bg-slate-800');
+        micBtn.classList.remove('bg-[#0B1D48]');
         micBtn.classList.add('bg-rose-600', 'text-white', 'animate-pulse');
         status.textContent = '🎙️ المايك شغال.. اتفضل اتكلم بالمصري...';
       };
@@ -1912,13 +1804,12 @@
       appState.speechRecognition.onend = () => {
         appState.isRecordingVoice = false;
         micBtn.classList.remove('bg-rose-600', 'text-white', 'animate-pulse');
-        micBtn.classList.add('bg-slate-800');
+        micBtn.classList.add('bg-[#0B1D48]');
       };
 
       appState.speechRecognition.start();
     }
 
-    // رفع صورة محادثة واتساب واستخراج البيانات
     function handleImageUpload(e) {
       const file = e.target.files[0];
       if (!file) return;
@@ -1928,7 +1819,6 @@
         document.getElementById('ai-preview-img').src = evt.target.result;
         document.getElementById('ai-image-preview-area').classList.remove('hidden');
 
-        // محاكاة وتحليل سكرين شوت المحادثة بذكاء وتجهيز الموعد
         setTimeout(() => {
           document.getElementById('ai-text-input').value = 'احجز موعد تركيب كاميرات للأستاذ حسام في التجمع بناءً على اسكرين شوت المحادثة المرفوعة';
           sendAiMessage();
@@ -1943,11 +1833,7 @@
       document.getElementById('ai-image-preview-area').classList.add('hidden');
     }
 
-    // -----------------------------------------------------------------
-    // 10. المنبهات والتذكيرات الذكية (Smart Alarms & Notifications)
-    // -----------------------------------------------------------------
     function startPeriodicReminderChecker() {
-      // طلب إذن الإشعارات في الخلفية
       if ('Notification' in window && Notification.permission !== 'granted') {
         Notification.requestPermission();
       }
@@ -1963,7 +1849,7 @@
             }
           }
         } catch (e) {}
-      }, 60000); // فحص كل دقيقة
+      }, 60000);
     }
 
     function showActiveAlarm(dueItem) {
@@ -1972,14 +1858,12 @@
       banner.classList.remove('hidden');
       text.textContent = `🚨 تنبيه موعد ${dueItem.client_name} الساعة ${dueItem.time}! باقي ${dueItem.minutes_remaining} دقيقة - وقت التحرك: ${dueItem.travel_departure_time}`;
 
-      // تشغيل المنبه الصوتي القوي
       startUrgentAlarmSound();
 
-      // إشعار PWA / متصفح
       if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification('تنبيه موعد لشركة الفتح', {
+        new Notification('تنبيه موعد لشركة الفتح للأنظمة الذكية', {
           body: `موعد ${dueItem.client_name} في تمام ${dueItem.time}. حان وقت التحرك!`,
-          icon: 'icon.svg'
+          icon: 'logo.png'
         });
       }
     }
@@ -1989,9 +1873,6 @@
       document.getElementById('active-alarm-banner').classList.add('hidden');
     }
 
-    // -----------------------------------------------------------------
-    // 11. إعدادات النظام والشاشات (Settings & Theme)
-    // -----------------------------------------------------------------
     function initTheme() {
       const savedTheme = localStorage.getItem('alfath_theme') || 'dark';
       applyTheme(savedTheme);
@@ -2006,9 +1887,11 @@
       const icon = document.getElementById('theme-icon');
       if (theme === 'dark') {
         document.documentElement.classList.add('dark');
+        document.body.className = 'dark min-h-screen flex flex-col antialiased selection:bg-[#0099F7] selection:text-white transition-colors duration-200';
         icon.setAttribute('data-lucide', 'sun');
       } else {
         document.documentElement.classList.remove('dark');
+        document.body.className = 'min-h-screen flex flex-col antialiased selection:bg-[#0099F7] selection:text-white transition-colors duration-200';
         icon.setAttribute('data-lucide', 'moon');
       }
       localStorage.setItem('alfath_theme', theme);
@@ -2081,13 +1964,10 @@
       dl.remove();
     }
 
-    // -----------------------------------------------------------------
-    // 12. Service Worker للـ PWA
-    // -----------------------------------------------------------------
     function initServiceWorker() {
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js').then(() => {
-          console.log('Al-Fath PWA Service Worker Registered');
+          console.log('Al-Fateh PWA Service Worker Registered');
         }).catch(err => {
           console.warn('SW failed:', err);
         });

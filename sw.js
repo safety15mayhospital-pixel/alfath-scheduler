@@ -1,10 +1,10 @@
-const CACHE_NAME = 'alfath-cache-v1';
+const CACHE_NAME = 'alfateh-cache-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/book.html',
   '/manifest.json',
-  '/icon.svg'
+  '/logo.png'
 ];
 
 self.addEventListener('install', (e) => {
@@ -34,7 +34,6 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
 
-  // APIs: استراتيجية Network First مع IndexedDB fallback
   if (url.pathname.startsWith('/api/')) {
     e.respondWith(
       fetch(e.request).catch(() => {
@@ -46,7 +45,6 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Static Assets: Cache First مع Network fallback
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;

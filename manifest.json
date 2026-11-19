@@ -1,17 +1,17 @@
 {
-  "name": "الفتح الذكي - شركة الفتح للأنظمة الذكية",
+  "name": "شركة الفتح للأنظمة الذكية - Al-Fateh Smart Systems Company",
   "short_name": "الفتح الذكي",
-  "description": "نظام ذكي متكامل لإدارة المواعيد والعملاء والعمل الميداني",
+  "description": "نظام ذكي متكامل لإدارة المواعيد والعملاء والعمل الميداني - شركة الفتح للأنظمة الذكية",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#064E3B",
-  "theme_color": "#047857",
+  "background_color": "#070E20",
+  "theme_color": "#0B1D48",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "icon.svg",
+      "src": "logo.png",
       "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]

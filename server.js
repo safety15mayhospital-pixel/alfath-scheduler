@@ -252,9 +252,9 @@ app.post('/api/ai/command', async (req, res) => {
     const today = new Date().toISOString().split('T')[0];
     const todayApts = db.appointments.filter(a => a.date === today && a.status !== 'cancelled');
     if (todayApts.length === 0) {
-      reply = 'يا بشمهندس أحمد، جدولك النهاردة فاضي تماماً. تحب نسكن موعد من سلة المؤجلات؟';
+      reply = 'يا أستاذ سليمان، جدولك النهاردة فاضي تماماً. تحب نسكن موعد من سلة المؤجلات؟';
     } else {
-      reply = `جدولك النهاردة يحتوي على ${todayApts.length} موعد:\n` +
+      reply = `جدولك النهاردة يا أستاذ سليمان يحتوي على ${todayApts.length} موعد:\n` +
         todayApts.map(a => `• الساعة ${a.time} - ${a.client_name} (${a.type}) في ${a.area}`).join('\n');
     }
   } else if ((p.includes('رحل') || p.includes('أجل')) && (p.includes('العصر') || p.includes('بكرة'))) {
