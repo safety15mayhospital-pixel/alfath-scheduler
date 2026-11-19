@@ -1,10 +1,11 @@
-const CACHE_NAME = 'alfateh-cache-v2';
+const CACHE_NAME = 'alfateh-cache-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/book.html',
   '/manifest.json',
-  '/logo.png'
+  '/logo.png',
+  '/logo-data.js'
 ];
 
 self.addEventListener('install', (e) => {
@@ -38,7 +39,7 @@ self.addEventListener('fetch', (e) => {
     e.respondWith(
       fetch(e.request).catch(() => {
         return new Response(JSON.stringify({ offline: true, error: 'أنت في وضع عدم الاتصال' }), {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json; charset=utf-8' }
         });
       })
     );

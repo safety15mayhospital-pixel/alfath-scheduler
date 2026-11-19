@@ -9,7 +9,7 @@
     "default_buffer_minutes": 45,
     "booking_approval_mode": "manual",
     "gemini_api_key": "",
-    "theme_mode": "dark",
+    "theme_mode": "light",
     "emergency_closed_date": "",
     "whatsapp_templates": {
       "confirmation": "مرحباً بك {client_name}، نؤكد حجز موعد {type} مع شركة الفتح للأنظمة الذكية (Al-Fateh Smart Systems) يوم {date} في تمام الساعة {time}. العنوان المسجل: {address}. للاستفسار أو التعديل يسعدنا تواصلك معنا دائماً.",
