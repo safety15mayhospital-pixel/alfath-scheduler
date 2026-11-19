@@ -183,6 +183,20 @@ try {
                 $responseBytes = [System.Text.Encoding]::UTF8.GetBytes('{"success": true}')
             }
         }
+        elseif ($urlPath -eq '/api/appointments/clear') {
+            $db = Get-Database
+            $db.appointments = @()
+            Save-Database $db
+            $responseBytes = [System.Text.Encoding]::UTF8.GetBytes('{"success": true, "count": 0}')
+        }
+        elseif ($urlPath -eq '/api/data/clear') {
+            $db = Get-Database
+            $db.appointments = @()
+            $db.clients = @()
+            $db.settings.emergency_closed_date = ""
+            Save-Database $db
+            $responseBytes = [System.Text.Encoding]::UTF8.GetBytes('{"success": true, "message": "All data cleared"}')
+        }
 
         # -------------------------------------------------------------
         # 3. API: /api/clients

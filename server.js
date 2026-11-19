@@ -113,6 +113,22 @@ app.delete('/api/appointments', (req, res) => {
   res.json({ success: true });
 });
 
+app.post('/api/appointments/clear', (req, res) => {
+  const db = getDB();
+  db.appointments = [];
+  saveDB(db);
+  res.json({ success: true, count: 0 });
+});
+
+app.post('/api/data/clear', (req, res) => {
+  const db = getDB();
+  db.appointments = [];
+  db.clients = [];
+  if (db.settings) db.settings.emergency_closed_date = "";
+  saveDB(db);
+  res.json({ success: true, message: "All data cleared" });
+});
+
 // 3. Clients API
 app.get('/api/clients', (req, res) => {
   const db = getDB();

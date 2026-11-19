@@ -51,9 +51,15 @@
       font-family: 'Cairo', 'Tajawal', sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
+    @media (max-width: 640px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
     body {
       background-color: #F1F5F9;
       color: #0B1D48;
+      overflow-x: hidden;
     }
     body.dark {
       background-color: #070E20;
@@ -117,31 +123,31 @@
       </div>
     </div>
 
-    <!-- أزرار الإجراءات السريعة في الهيدر -->
-    <div class="flex items-center gap-2 sm:gap-3">
+    <!-- أزرار الإجراءات السريعة في الهيدر (منسقة للموبايل والشاشات الكبيرة) -->
+    <div class="flex items-center gap-1.5 sm:gap-3">
 
       <!-- زر الطوارئ (إغلاق اليوم) -->
-      <button onclick="openEmergencyModal()" title="إغلاق حجوزات اليوم للطوارئ" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/80 dark:hover:bg-rose-900 border border-rose-300 dark:border-rose-600/50 text-rose-700 dark:text-rose-300 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm active:scale-95">
+      <button onclick="openEmergencyModal()" title="إغلاق حجوزات اليوم للطوارئ" class="px-2 sm:px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/80 border border-rose-300 dark:border-rose-600/50 text-rose-700 dark:text-rose-300 text-xs font-bold flex items-center gap-1 transition-all shadow-sm active:scale-95">
         <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500"></i>
         <span class="hidden md:inline">زر الطوارئ</span>
-        <span class="text-[11px] bg-rose-200 dark:bg-rose-900 px-1.5 py-0.5 rounded">إغلاق اليوم</span>
+        <span class="text-[10px] sm:text-[11px] bg-rose-200 dark:bg-rose-900 px-1.5 py-0.5 rounded font-bold">إغلاق</span>
       </button>
 
-      <!-- زر سلة المؤجلات الذكية -->
-      <button onclick="togglePostponedDrawer()" title="سلة المؤجلات الذكية" class="relative p-2 sm:px-3 sm:py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-[#0F1D3A] border border-amber-300 dark:border-amber-500/40 text-amber-800 dark:text-amber-300 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95">
+      <!-- زر سلة المؤجلات الذكية (يظهر بالشريط السفلي على الموبايل) -->
+      <button onclick="togglePostponedDrawer()" title="سلة المؤجلات الذكية" class="hidden sm:inline-flex relative p-2 sm:px-3 sm:py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 dark:bg-[#0F1D3A] border border-amber-300 dark:border-amber-500/40 text-amber-800 dark:text-amber-300 text-xs font-bold items-center gap-1.5 transition-all active:scale-95">
         <i data-lucide="archive" class="w-4 h-4 text-amber-600"></i>
         <span class="hidden lg:inline">سلة المؤجلات</span>
         <span id="postponed-badge" class="px-1.5 py-0.2 rounded-full text-[10px] font-black bg-amber-500 text-white">0</span>
       </button>
 
       <!-- زر صفحة الحجز الخارجي /book.html -->
-      <a href="book.html" target="_blank" title="رابط حجز العملاء الخارجي" class="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-[#0F1D3A] border border-blue-200 dark:border-[#0099F7]/30 text-[#0099F7] text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95">
+      <a href="book.html" target="_blank" title="رابط حجز العملاء الخارجي" class="hidden md:inline-flex p-2 sm:px-3 sm:py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-[#0F1D3A] border border-blue-200 dark:border-[#0099F7]/30 text-[#0099F7] text-xs font-bold items-center gap-1.5 transition-all active:scale-95">
         <i data-lucide="external-link" class="w-4 h-4 text-[#0099F7]"></i>
-        <span class="hidden md:inline">صفحة الحجز (/book)</span>
+        <span class="hidden lg:inline">صفحة الحجز (/book)</span>
       </a>
 
-      <!-- زر المساعد الذكي AI -->
-      <button onclick="toggleAiDrawer()" title="المساعد الذكي (صوت، صورة، كتابة)" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#0099F7]/20 transition-all active:scale-95">
+      <!-- زر المساعد الذكي AI (يظهر بالشريط السفلي على الموبايل) -->
+      <button onclick="toggleAiDrawer()" title="المساعد الذكي (صوت، صورة، كتابة)" class="hidden sm:inline-flex px-2.5 sm:px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white text-xs font-bold items-center gap-1.5 shadow-md shadow-[#0099F7]/20 transition-all active:scale-95">
         <i data-lucide="sparkles" class="w-4 h-4 text-cyan-200 animate-spin" style="animation-duration: 8s;"></i>
         <span>المساعد الذكي</span>
       </button>
@@ -151,8 +157,8 @@
         <i id="theme-icon" data-lucide="moon" class="w-4 h-4 text-[#0099F7]"></i>
       </button>
 
-      <!-- زر الإعدادات -->
-      <button onclick="openSettingsModal()" title="إعدادات النظام" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 transition-all active:scale-95">
+      <!-- زر الإعدادات (يظهر بالشريط السفلي على الموبايل) -->
+      <button onclick="openSettingsModal()" title="إعدادات النظام" class="hidden sm:inline-flex p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 transition-all active:scale-95">
         <i data-lucide="settings" class="w-4 h-4"></i>
       </button>
 
@@ -180,39 +186,41 @@
     </div>
   </div>
 
-  <!-- شريط التحكم والتنقل في التقويم (ألوان فاتحة نقية) -->
-  <div class="bg-white dark:bg-[#070E20]/90 border-b border-slate-200 dark:border-slate-800 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 shadow-sm">
+  <!-- شريط التحكم والتنقل في التقويم (منسق بالكامل للموبايل) -->
+  <div class="bg-white dark:bg-[#070E20]/90 border-b border-slate-200 dark:border-slate-800 px-3 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2.5 shadow-sm">
     
     <!-- عروض التقويم الأربعة -->
-    <div class="flex items-center bg-slate-100 dark:bg-[#0F1D3A] p-1 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs font-bold">
-      <button id="view-day" onclick="switchCalendarView('day')" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] text-white shadow-sm transition-all">يومي</button>
-      <button id="view-week" onclick="switchCalendarView('week')" class="px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0099F7] transition-all">أسبوعي</button>
-      <button id="view-month" onclick="switchCalendarView('month')" class="px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0099F7] transition-all">شهري</button>
-      <button id="view-agenda" onclick="switchCalendarView('agenda')" class="px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0099F7] transition-all">قائمة المهام</button>
+    <div class="w-full sm:w-auto flex items-center justify-between sm:justify-start bg-slate-100 dark:bg-[#0F1D3A] p-1 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs font-bold overflow-x-auto">
+      <button id="view-day" onclick="switchCalendarView('day')" class="flex-1 sm:flex-initial text-center px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] text-white shadow-sm transition-all">يومي</button>
+      <button id="view-week" onclick="switchCalendarView('week')" class="flex-1 sm:flex-initial text-center px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0099F7] transition-all">أسبوعي</button>
+      <button id="view-month" onclick="switchCalendarView('month')" class="flex-1 sm:flex-initial text-center px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0099F7] transition-all">شهري</button>
+      <button id="view-agenda" onclick="switchCalendarView('agenda')" class="flex-1 sm:flex-initial text-center px-3 py-1.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0099F7] transition-all">قائمة المهام</button>
     </div>
 
     <!-- أزرار التنقل بالتاريخ واليوم الحالي -->
-    <div class="flex items-center gap-2">
-      <button onclick="navigateDate(-1)" class="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all active:scale-95" title="السابق">
-        <i data-lucide="chevron-right" class="w-4 h-4"></i>
-      </button>
+    <div class="w-full sm:w-auto flex items-center justify-between sm:justify-start gap-2">
+      <div class="flex items-center gap-1.5">
+        <button onclick="navigateDate(-1)" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all active:scale-95" title="السابق">
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
 
-      <button onclick="navigateToday()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] border border-slate-200 dark:border-slate-700 text-xs font-bold text-[#0B1D48] dark:text-white transition-all">
-        اليوم
-      </button>
+        <button onclick="navigateToday()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] border border-slate-200 dark:border-slate-700 text-xs font-bold text-[#0B1D48] dark:text-white transition-all">
+          اليوم
+        </button>
 
-      <button onclick="navigateDate(1)" class="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all active:scale-95" title="التالي">
-        <i data-lucide="chevron-left" class="w-4 h-4"></i>
-      </button>
+        <button onclick="navigateDate(1)" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#0F1D3A] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-all active:scale-95" title="التالي">
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
+      </div>
 
       <input type="date" id="calendar-date-picker" onchange="onDatePickerChange(this.value)" class="bg-slate-100 dark:bg-[#0F1D3A] border border-slate-200 dark:border-slate-700 text-[#0B1D48] dark:text-white text-xs font-semibold px-2.5 py-1.5 rounded-xl outline-none focus:border-[#0099F7]">
 
-      <span id="current-date-label" class="text-xs sm:text-sm font-extrabold text-[#0099F7] pr-2">
+      <span id="current-date-label" class="text-xs sm:text-sm font-extrabold text-[#0099F7] pr-1 truncate">
       </span>
     </div>
 
-    <!-- زر إضافة موعد جديد -->
-    <button onclick="openAppointmentModal()" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-[#0099F7]/30 transition-all active:scale-95">
+    <!-- زر إضافة موعد جديد (للشاشات الكبيرة، وعلى الموبايل عبر الزر العائم بالأسفل) -->
+    <button onclick="openAppointmentModal()" class="hidden sm:inline-flex px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#1D56B8] to-[#0099F7] hover:from-[#154699] hover:to-[#0088dd] text-white text-xs font-bold items-center gap-1.5 shadow-md shadow-[#0099F7]/30 transition-all active:scale-95">
       <i data-lucide="plus" class="w-4 h-4"></i>
       <span>إضافة موعد جديد</span>
     </button>
@@ -254,8 +262,8 @@
     </span>
   </div>
 
-  <!-- منطقة العرض الرئيسية للتقويم -->
-  <main class="flex-1 p-3 sm:p-6 overflow-y-auto custom-scrollbar relative">
+  <!-- منطقة العرض الرئيسية للتقويم (مع هامش أمان سفلي للموبايل) -->
+  <main class="flex-1 p-3 sm:p-6 overflow-y-auto custom-scrollbar relative pb-28 sm:pb-8">
     
     <!-- 1. عرض اليوم (Day View) -->
     <div id="view-container-day" class="space-y-3">
@@ -283,30 +291,31 @@
 
   </main>
 
-  <!-- شريط التنقل السفلي للموبايل -->
-  <nav class="sm:hidden sticky bottom-0 z-40 bg-white/95 dark:bg-[#0B1D48]/95 border-t border-slate-200 dark:border-[#0099F7]/30 backdrop-blur-lg px-4 py-2 flex items-center justify-around text-xs font-bold text-slate-600 dark:text-slate-300 shadow-lg">
-    <button onclick="switchCalendarView('day')" class="flex flex-col items-center gap-1 focus:text-[#0099F7]">
+  <!-- شريط التنقل السفلي الاحترافي للموبايل (Mobile App Navigation Bar) -->
+  <nav class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0B1D48]/95 border-t border-slate-200 dark:border-slate-800 backdrop-blur-lg px-2 py-2 flex items-center justify-around text-xs font-bold text-slate-600 dark:text-slate-300 shadow-2xl" style="padding-bottom: max(0.5rem, env(safe-area-inset-bottom));">
+    <button onclick="switchCalendarView('day'); window.scrollTo({top:0, behavior:'smooth'});" class="flex-1 flex flex-col items-center gap-1 active:scale-95 transition-all text-[#0099F7]">
       <i data-lucide="calendar" class="w-5 h-5 text-[#0099F7]"></i>
-      <span>الجدول</span>
+      <span class="text-[10px]">الجدول</span>
     </button>
-    <button onclick="togglePostponedDrawer()" class="flex flex-col items-center gap-1 focus:text-amber-500 relative">
+    <button onclick="togglePostponedDrawer()" class="flex-1 flex flex-col items-center gap-1 active:scale-95 transition-all relative">
       <i data-lucide="archive" class="w-5 h-5 text-amber-500"></i>
-      <span>المؤجلات</span>
-      <span id="postponed-badge-mobile" class="absolute -top-1 -right-2 px-1 rounded-full text-[9px] bg-amber-500 text-white font-black">0</span>
+      <span class="text-[10px]">المؤجلات</span>
+      <span id="postponed-badge-mobile" class="absolute -top-1 right-3 px-1.5 py-0.2 rounded-full text-[9px] bg-amber-500 text-white font-black">0</span>
     </button>
-    <button onclick="openAppointmentModal()" class="flex flex-col items-center gap-1 text-[#0099F7]">
-      <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-[#1D56B8] to-[#0099F7] flex items-center justify-center text-white shadow-lg shadow-[#0099F7]/40 border-2 border-white">
-        <i data-lucide="plus" class="w-6 h-6"></i>
+    <!-- زر الإضافة العائم في المنتصف -->
+    <button onclick="openAppointmentModal()" class="flex-1 flex flex-col items-center -mt-6 active:scale-90 transition-all">
+      <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#0B1D48] to-[#0099F7] flex items-center justify-center text-white shadow-lg shadow-blue-500/40 border-4 border-white dark:border-[#070E20]">
+        <i data-lucide="plus" class="w-6 h-6 stroke-[3]"></i>
       </div>
-      <span>إضافة</span>
+      <span class="text-[10px] text-[#0099F7] font-extrabold mt-0.5">موعد جديد</span>
     </button>
-    <button onclick="toggleAiDrawer()" class="flex flex-col items-center gap-1 focus:text-[#0099F7]">
+    <button onclick="toggleAiDrawer()" class="flex-1 flex flex-col items-center gap-1 active:scale-95 transition-all">
       <i data-lucide="sparkles" class="w-5 h-5 text-[#0099F7]"></i>
-      <span>المساعد</span>
+      <span class="text-[10px]">المساعد</span>
     </button>
-    <button onclick="openSettingsModal()" class="flex flex-col items-center gap-1 focus:text-[#0099F7]">
-      <i data-lucide="settings" class="w-5 h-5 text-slate-600 dark:text-slate-300"></i>
-      <span>الإعدادات</span>
+    <button onclick="openSettingsModal()" class="flex-1 flex flex-col items-center gap-1 active:scale-95 transition-all">
+      <i data-lucide="settings" class="w-5 h-5 text-slate-500"></i>
+      <span class="text-[10px]">الإعدادات</span>
     </button>
   </nav>
 
@@ -315,8 +324,8 @@
   <!-- ============================================================= -->
 
   <!-- 1. نافذة بطاقة العميل الذكي (Client Smart Card Modal) -->
-  <div id="client-modal" class="fixed inset-0 z-50 bg-slate-900/40 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-white dark:bg-[#0F1D3A] border border-slate-200 dark:border-[#0099F7]/30 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in duration-200">
+  <div id="client-modal" class="fixed inset-0 z-50 bg-slate-900/40 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white dark:bg-[#0F1D3A] border border-slate-200 dark:border-[#0099F7]/30 rounded-t-3xl sm:rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in duration-200">
       
       <div id="smart-card-header" class="p-5 bg-gradient-to-l from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/30 flex items-start justify-between text-white">
         <div class="flex items-center gap-3">
@@ -401,8 +410,8 @@
   </div>
 
   <!-- 2. نافذة إضافة وتعديل موعد (Appointment Form Modal) -->
-  <div id="apt-modal" class="fixed inset-0 z-50 bg-slate-900/40 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-white dark:bg-[#0F1D3A] border border-slate-200 dark:border-[#0099F7]/40 rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
+  <div id="apt-modal" class="fixed inset-0 z-50 bg-slate-900/40 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white dark:bg-[#0F1D3A] border border-slate-200 dark:border-[#0099F7]/40 rounded-t-3xl sm:rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl">
       <div class="p-5 bg-gradient-to-l from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/30 flex items-center justify-between text-white">
         <h3 id="apt-modal-title" class="text-base font-bold flex items-center gap-2">
           <i data-lucide="calendar-plus" class="w-5 h-5 text-[#0099F7]"></i>
@@ -699,8 +708,8 @@
   </div>
 
   <!-- 7. نافذة الإعدادات الشاملة (Settings Modal) -->
-  <div id="settings-modal" class="fixed inset-0 z-50 bg-slate-900/40 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-white dark:bg-[#0F1D3A] border border-slate-200 dark:border-[#0099F7]/40 rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl">
+  <div id="settings-modal" class="fixed inset-0 z-50 bg-slate-900/40 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white dark:bg-[#0F1D3A] border border-slate-200 dark:border-[#0099F7]/40 rounded-t-3xl sm:rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl">
       <div class="p-5 bg-gradient-to-l from-[#0B1D48] to-[#1D56B8] border-b border-[#0099F7]/30 flex items-center justify-between text-white">
         <h3 class="text-base font-bold flex items-center gap-2">
           <i data-lucide="sliders" class="w-5 h-5 text-[#0099F7]"></i>
@@ -764,6 +773,14 @@
             <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">4. قالب رسالة الطوارئ وإغلاق اليوم:</label>
             <textarea id="set-tpl-emergency" rows="2" class="w-full py-1.5 px-3 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white outline-none text-[11px]"></textarea>
           </div>
+        </div>
+
+        <!-- زر مسح وتصفير جميع البيانات نهائياً -->
+        <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
+          <button type="button" onclick="clearAllData()" class="w-full py-2.5 px-3 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/70 border border-rose-300 dark:border-rose-700/60 text-rose-700 dark:text-rose-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95">
+            <i data-lucide="trash-2" class="w-4 h-4 text-rose-600"></i>
+            <span>مسح وتصفير كافة البيانات نهائياً (المواعيد والعملاء)</span>
+          </button>
         </div>
 
         <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-2">
@@ -910,6 +927,18 @@
     });
 
     async function fetchAllData() {
+      // إفراغ ومسح كافة البيانات (المواعيد والعملاء) تماماً لبدء التشغيل الفعلي
+      if (!localStorage.getItem('alfath_wipe_all_data_v1')) {
+        localStorage.removeItem('alfath_appointments');
+        localStorage.removeItem('alfath_clients');
+        localStorage.removeItem('alfath_ai_chat');
+        localStorage.setItem('alfath_appointments', JSON.stringify([]));
+        localStorage.setItem('alfath_clients', JSON.stringify([]));
+        localStorage.setItem('alfath_wipe_all_data_v1', 'true');
+        appState.appointments = [];
+        appState.clients = [];
+      }
+
       try {
         const [aptRes, setRes, cliRes] = await Promise.all([
           fetch('/api/appointments').catch(() => null),
@@ -923,6 +952,7 @@
         } else {
           const localApts = localStorage.getItem('alfath_appointments');
           if (localApts) appState.appointments = JSON.parse(localApts);
+          else appState.appointments = [];
         }
 
         if (setRes && setRes.ok) {
@@ -935,6 +965,11 @@
 
         if (cliRes && cliRes.ok) {
           appState.clients = await cliRes.json();
+          localStorage.setItem('alfath_clients', JSON.stringify(appState.clients));
+        } else {
+          const localCli = localStorage.getItem('alfath_clients');
+          if (localCli) appState.clients = JSON.parse(localCli);
+          else appState.clients = [];
         }
 
       } catch (e) {
@@ -942,6 +977,23 @@
         appState.isOffline = true;
       }
       updatePostponedBadge();
+    }
+
+    async function clearAllData() {
+      if (!confirm('هل أنت متأكد تماماً من رغبتك في حذف ومسح كل البيانات (كافة المواعيد وبيانات العملاء)؟ سيتم تصفير النظام بالكامل.')) return;
+      appState.appointments = [];
+      appState.clients = [];
+      localStorage.setItem('alfath_appointments', JSON.stringify([]));
+      localStorage.setItem('alfath_clients', JSON.stringify([]));
+      localStorage.removeItem('alfath_ai_chat');
+      try {
+        await fetch('/api/data/clear', { method: 'POST' });
+        await fetch('/api/appointments/clear', { method: 'POST' });
+      } catch (e) {}
+      closeSettingsModal();
+      renderCurrentView();
+      updatePostponedBadge();
+      alert('تم مسح وتصفير كافة البيانات بنجاح! النظام الآن نظيف تماماً وخالٍ من أي بيانات تجريبية.');
     }
 
     async function saveAppointmentToBackend(aptData, isNew = false) {
@@ -1096,11 +1148,11 @@
           });
         } else {
           contentCol.innerHTML = `
-            <div class="flex items-center justify-between text-xs text-slate-400 py-2 px-3 border border-dashed border-slate-300 dark:border-[#0099F7]/20 rounded-xl hover:border-[#0099F7]/50 transition-all group">
-              <span class="text-[11px] font-semibold text-slate-400">وقت شاغر متاح للحجز</span>
-              <button onclick="openAppointmentModal('${appState.selectedDate}', '${timeStr}')" class="opacity-0 group-hover:opacity-100 px-2.5 py-1 rounded-lg bg-[#0099F7] text-white text-[11px] font-bold flex items-center gap-1 transition-all shadow-sm">
+            <div onclick="openAppointmentModal('${appState.selectedDate}', '${timeStr}')" class="cursor-pointer flex items-center justify-between text-xs text-slate-400 py-2 px-3 border border-dashed border-slate-300 dark:border-[#0099F7]/25 rounded-xl hover:border-[#0099F7] hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-all group">
+              <span class="text-[11px] font-semibold text-slate-400 group-hover:text-[#0099F7]">وقت شاغر متاح للحجز</span>
+              <button type="button" class="px-2.5 py-1 rounded-lg bg-[#0099F7] text-white text-[11px] font-bold flex items-center gap-1 shadow-sm transition-all active:scale-95">
                 <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                <span>حجز هذا الوقت</span>
+                <span>حجز</span>
               </button>
             </div>
           `;
