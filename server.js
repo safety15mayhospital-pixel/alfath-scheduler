@@ -135,6 +135,32 @@ app.get('/api/clients', (req, res) => {
   res.json(db.clients || []);
 });
 
+app.post('/api/clients/bulk', (req, res) => {
+  const db = getDB();
+  const newClients = req.body.clients || [];
+  let addedCount = 0;
+  if (!db.clients) db.clients = [];
+  newClients.forEach(c => {
+    if (!c.phone) return;
+    const cleanPhone = String(c.phone).trim();
+    const exists = db.clients.find(x => x.phone === cleanPhone);
+    if (!exists) {
+      db.clients.push({
+        id: c.id || ('c_' + Math.random().toString(36).substr(2, 9)),
+        name: c.name || 'عميل بدون اسم',
+        phone: cleanPhone,
+        area: c.area || '',
+        address: c.address || '',
+        notes: c.notes || 'تمت المزامنة من جهات الاتصال',
+        created_at: new Date().toISOString()
+      });
+      addedCount++;
+    }
+  });
+  saveDB(db);
+  res.json({ success: true, added_count: addedCount, total_clients: db.clients.length });
+});
+
 // 4. Emergency Close Day API
 app.post('/api/emergency/close-today', (req, res) => {
   const db = getDB();

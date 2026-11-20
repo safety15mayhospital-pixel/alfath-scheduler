@@ -452,14 +452,63 @@
           <input type="text" id="form-apt-title-input" required placeholder="مثال: تركيب شبكة كاميرات IP هيكفيجن 8 نقط" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white focus:border-[#0099F7] outline-none">
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">اسم العميل *</label>
-            <input type="text" id="form-apt-client-name" required placeholder="أ / محمود رضوان" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white focus:border-[#0099F7] outline-none">
+        <!-- شريط أدوات مزامنة جهات الاتصال والواتساب الذكي -->
+        <div class="p-2.5 rounded-2xl bg-gradient-to-r from-blue-50/90 to-indigo-50/90 dark:from-[#0B1D48] dark:to-[#11234a] border border-blue-200 dark:border-[#0099F7]/30 flex flex-wrap items-center justify-between gap-2 shadow-xs">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-[#0B1D48] dark:text-[#8FD5FF]">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#0099F7] animate-pulse"></i>
+            <span>مزامنة واقتراح جهات الاتصال:</span>
           </div>
-          <div>
-            <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">رقم الهاتف / الواتساب *</label>
-            <input type="tel" id="form-apt-phone" required placeholder="010XXXXXXXX" class="w-full py-2.5 px-3 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white focus:border-[#0099F7] outline-none" dir="ltr">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <!-- سحب من الهاتف (Contact Picker API) -->
+            <button type="button" onclick="triggerNativeContactPicker()" class="px-2.5 py-1 rounded-xl bg-white dark:bg-[#0F1D3A] hover:bg-blue-50 text-[#0099F7] text-[11px] font-bold border border-blue-200 dark:border-[#0099F7]/40 flex items-center gap-1 transition-all shadow-xs active:scale-95" title="اختيار مباشر من دليل الهاتف">
+              <i data-lucide="smartphone" class="w-3 h-3"></i>
+              <span>سحب من الهاتف</span>
+            </button>
+            <!-- لصق سريع من واتساب -->
+            <button type="button" onclick="openWhatsAppQuickPasteModal()" class="px-2.5 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-bold flex items-center gap-1 transition-all shadow-xs active:scale-95" title="تحليل رسالة أو كارت محادثة واتساب تلقائياً">
+              <i data-lucide="message-square" class="w-3 h-3"></i>
+              <span>لصق كارت واتساب</span>
+            </button>
+            <!-- استيراد VCF -->
+            <label class="cursor-pointer px-2.5 py-1 rounded-xl bg-white dark:bg-[#0F1D3A] hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-[11px] font-bold border border-slate-300 dark:border-slate-700 flex items-center gap-1 transition-all shadow-xs active:scale-95" title="استيراد جهات اتصال من ملف VCF">
+              <i data-lucide="file-up" class="w-3 h-3 text-indigo-500"></i>
+              <span>ملف VCF</span>
+              <input type="file" id="vcf-file-input" accept=".vcf,.vcard,.csv" class="sr-only" onchange="handleVcfImport(event)">
+            </label>
+          </div>
+        </div>
+
+        <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <!-- حقل اسم العميل مع البحث الذكي -->
+          <div class="relative">
+            <div class="flex items-center justify-between mb-1">
+              <label class="block font-bold text-slate-700 dark:text-slate-300">اسم العميل *</label>
+              <span id="name-match-count" class="text-[10px] text-[#0099F7] font-bold hidden"></span>
+            </div>
+            <div class="relative">
+              <input type="text" id="form-apt-client-name" required placeholder="ابحث أو اكتب اسم العميل..." autocomplete="off" oninput="handleSmartContactSearch(this.value, 'name')" onfocus="handleSmartContactSearch(this.value, 'name')" class="w-full py-2.5 pr-8 pl-3 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white focus:border-[#0099F7] outline-none">
+              <i data-lucide="user" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-3"></i>
+            </div>
+          </div>
+
+          <!-- حقل رقم الهاتف والواتساب مع كاشف الشبكة وزر المحادثة -->
+          <div class="relative">
+            <div class="flex items-center justify-between mb-1">
+              <label class="block font-bold text-slate-700 dark:text-slate-300">رقم الهاتف / الواتساب *</label>
+              <span id="phone-operator-badge" class="text-[10px] font-extrabold px-1.5 py-0.2 rounded-full hidden"></span>
+            </div>
+            <div class="relative">
+              <input type="tel" id="form-apt-phone" required placeholder="010XXXXXXXX" autocomplete="off" oninput="handleSmartPhoneInput(this.value)" onfocus="handleSmartContactSearch(this.value, 'phone')" class="w-full py-2.5 pr-8 pl-10 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white focus:border-[#0099F7] outline-none font-mono" dir="ltr">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-3"></i>
+              <!-- زر واتساب التفاعلي السريع بجانب الرقم -->
+              <a id="btn-quick-wa-test" href="#" target="_blank" class="absolute left-1.5 top-1.5 p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-600 hover:text-white transition-all hidden" title="فتح محادثة واتساب فورية">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- بطاقة الاقتراحات الذكية المنسدلة (Dropdown Autocomplete) -->
+          <div id="smart-contacts-dropdown" class="absolute left-0 right-0 top-full mt-1 z-50 bg-white dark:bg-[#0F1D3A] border-2 border-[#0099F7]/40 rounded-2xl shadow-2xl overflow-hidden hidden max-h-56 overflow-y-auto custom-scrollbar animate-in fade-in duration-150">
           </div>
         </div>
 
@@ -552,6 +601,39 @@
         <a id="drag-confirm-wa-link" href="#" target="_blank" onclick="closeDragConfirmModal()" class="w-1/2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow-md shadow-emerald-950">
           <span>💬</span> إرسال واتساب الآن
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3.5 نافذة اللصق السريع والتحليل الذكي لكارت أو محادثة واتساب -->
+  <div id="wa-paste-modal" class="fixed inset-0 z-50 bg-slate-900/50 dark:bg-[#070E20]/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white dark:bg-[#0F1D3A] border border-emerald-500/40 rounded-t-3xl sm:rounded-3xl w-full max-w-md overflow-hidden shadow-2xl">
+      <div class="p-4 bg-gradient-to-l from-emerald-700 to-teal-600 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm">لصق كارت أو محادثة واتساب</h3>
+            <p class="text-[10px] text-emerald-100">استخراج الاسم، الهاتف، المنطقة والخدمة تلقائياً</p>
+          </div>
+        </div>
+        <button onclick="closeWhatsAppQuickPasteModal()" class="text-white/80 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-4 space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">الصق نص الرسالة أو كارت العميل هنا:</label>
+          <textarea id="wa-paste-input" rows="4" placeholder="مثال:&#10;معاك أ / محمد حسني من فيلا 15 الياسمين التجمع الخامس، رقمي 01099887766 وعاوز صيانة لكاميرات المراقبة والانتركم..." class="w-full p-3 rounded-2xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white text-xs outline-none focus:border-emerald-500 transition-all custom-scrollbar"></textarea>
+        </div>
+        <div class="flex items-center justify-between gap-2 pt-1">
+          <button type="button" onclick="closeWhatsAppQuickPasteModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-[#0B1D48] text-slate-700 dark:text-slate-300 font-bold text-xs">إلغاء</button>
+          <button type="button" onclick="processWhatsAppPaste()" class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-emerald-900/20 active:scale-95 transition-all">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>تحليل وتعبئة البيانات فوراً</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -749,6 +831,35 @@
           <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">مفتاح Gemini API Key (اختياري)</label>
           <input type="password" id="set-gemini-key" placeholder="AIzaSy..." class="w-full py-2 px-3 rounded-xl bg-slate-50 dark:bg-[#0B1D48] border border-slate-300 dark:border-[#0099F7]/30 text-[#0B1D48] dark:text-white outline-none" dir="ltr">
           <span class="text-[10px] text-slate-500 dark:text-slate-400">النظام يحتوي أيضاً على محرك ذكي مدمج للهجة المصرية يعمل حتى بدون مفتاح API.</span>
+        </div>
+
+        <!-- قسم مزامنة وإدارة جهات الاتصال ودليل واتساب -->
+        <div class="p-3.5 rounded-2xl bg-blue-50/70 dark:bg-[#0B1D48]/80 border border-blue-200 dark:border-[#0099F7]/30 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-[#0B1D48] dark:text-[#8FD5FF] text-xs flex items-center gap-1.5">
+              <i data-lucide="book-user" class="w-4 h-4 text-[#0099F7]"></i>
+              <span>مزامنة دليل جهات الاتصال والواتساب</span>
+            </h4>
+            <span id="settings-contacts-count" class="text-[11px] font-extrabold px-2 py-0.5 rounded-full bg-white dark:bg-[#0F1D3A] text-[#0099F7] border border-blue-200 dark:border-[#0099F7]/30">0 جهة اتصال</span>
+          </div>
+          <p class="text-[11px] text-slate-600 dark:text-slate-300">
+            يمكنك استيراد جهات اتصال هاتفك أو محادثات واتساب (VCF / CSV) للتعرف الفوري على أسماء وأرقام ومواقع العملاء واقتراحها تلقائياً أثناء كتابة أي رقم.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1">
+            <button type="button" onclick="triggerNativeContactPicker()" class="p-2 rounded-xl bg-white dark:bg-[#0F1D3A] hover:bg-blue-50 text-[#0099F7] font-bold text-xs flex items-center justify-center gap-1.5 border border-blue-200 dark:border-[#0099F7]/30 shadow-xs active:scale-95 transition-all">
+              <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+              <span>سحب من الهاتف</span>
+            </button>
+            <label class="cursor-pointer p-2 rounded-xl bg-white dark:bg-[#0F1D3A] hover:bg-blue-50 text-indigo-600 dark:text-indigo-400 font-bold text-xs flex items-center justify-center gap-1.5 border border-indigo-200 dark:border-indigo-500/30 shadow-xs active:scale-95 transition-all">
+              <i data-lucide="file-up" class="w-3.5 h-3.5"></i>
+              <span>استيراد VCF/CSV</span>
+              <input type="file" accept=".vcf,.vcard,.csv" class="sr-only" onchange="handleVcfImport(event)">
+            </label>
+            <button type="button" onclick="exportContactsVcf()" class="p-2 rounded-xl bg-white dark:bg-[#0F1D3A] hover:bg-blue-50 text-emerald-600 dark:text-emerald-400 font-bold text-xs flex items-center justify-center gap-1.5 border border-emerald-200 dark:border-emerald-500/30 shadow-xs col-span-2 sm:col-span-1 active:scale-95 transition-all">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>تصدير VCF</span>
+            </button>
+          </div>
         </div>
 
         <div class="space-y-3 pt-2">
@@ -1656,6 +1767,16 @@
       document.getElementById('form-apt-time').value = time || '10:00';
       document.getElementById('form-apt-buffer').value = appState.settings.default_buffer_minutes || 45;
 
+      // إعادة ضبط كواشف الهاتف وجهات الاتصال
+      const opBadge = document.getElementById('phone-operator-badge');
+      if (opBadge) opBadge.classList.add('hidden');
+      const waBtn = document.getElementById('btn-quick-wa-test');
+      if (waBtn) waBtn.classList.add('hidden');
+      const dropdown = document.getElementById('smart-contacts-dropdown');
+      if (dropdown) dropdown.classList.add('hidden');
+      const countBadge = document.getElementById('name-match-count');
+      if (countBadge) countBadge.classList.add('hidden');
+
       document.getElementById('apt-modal').classList.remove('hidden');
     }
 
@@ -1677,11 +1798,14 @@
       document.getElementById('form-apt-map').value = apt.map_link || '';
       document.getElementById('form-apt-notes').value = apt.notes || '';
 
+      if (apt.phone) handleSmartPhoneInput(apt.phone);
       document.getElementById('apt-modal').classList.remove('hidden');
     }
 
     function closeAppointmentModal() {
       document.getElementById('apt-modal').classList.add('hidden');
+      const dropdown = document.getElementById('smart-contacts-dropdown');
+      if (dropdown) dropdown.classList.add('hidden');
     }
 
     async function handleAppointmentSubmit(e) {
@@ -1695,7 +1819,7 @@
         priority: document.getElementById('form-apt-priority').value,
         title: document.getElementById('form-apt-title-input').value,
         client_name: document.getElementById('form-apt-client-name').value,
-        phone: document.getElementById('form-apt-phone').value,
+        phone: normalizeEgyptianPhone(document.getElementById('form-apt-phone').value),
         date: document.getElementById('form-apt-date').value,
         time: document.getElementById('form-apt-time').value,
         duration: parseInt(document.getElementById('form-apt-duration').value || 60, 10),
@@ -1711,9 +1835,573 @@
       };
 
       await saveAppointmentToBackend(aptData, isNew);
+      if (aptData.client_name && aptData.phone) {
+        saveOrUpdateClientLocally({
+          name: aptData.client_name,
+          phone: aptData.phone,
+          area: aptData.area,
+          address: aptData.address,
+          notes: aptData.title
+        });
+      }
       closeAppointmentModal();
       playSoftBeep();
     }
+
+    // =============================================================
+    // محرك مزامنة جهات الاتصال واقتراح الأرقام والأسماء الذكي جداً
+    // (Smart Contacts & WhatsApp Intelligence Engine)
+    // =============================================================
+
+    // 1. تحويل وتنظيف الأرقام المصرية بذكاء فائق
+    function normalizeEgyptianPhone(phone) {
+      if (!phone) return '';
+      const arabicDigits = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+      let str = String(phone);
+      for (let i = 0; i < 10; i++) {
+        str = str.replace(new RegExp(arabicDigits[i], 'g'), i);
+      }
+      let cleaned = str.replace(/[^\d+]/g, '');
+      if (cleaned.startsWith('+20')) cleaned = '0' + cleaned.substring(3);
+      else if (cleaned.startsWith('0020')) cleaned = '0' + cleaned.substring(4);
+      else if (cleaned.startsWith('20') && cleaned.length > 10) cleaned = '0' + cleaned.substring(2);
+      if (cleaned.startsWith('00')) cleaned = cleaned.replace(/^0+/, '0');
+      return cleaned;
+    }
+
+    // 2. كشف شركة الاتصالات وشبكة المحمول المصرية
+    function getTelecomOperator(phone) {
+      const clean = normalizeEgyptianPhone(phone);
+      if (clean.startsWith('010')) return { name: 'فودافون', color: '#E60000', badgeClass: 'bg-red-500 text-white', dot: '🔴' };
+      if (clean.startsWith('011')) return { name: 'اتصالات', color: '#78BE20', badgeClass: 'bg-lime-600 text-white', dot: '🟢' };
+      if (clean.startsWith('012')) return { name: 'أورنج', color: '#FF7900', badgeClass: 'bg-amber-500 text-white', dot: '🟠' };
+      if (clean.startsWith('015')) return { name: 'وي (WE)', color: '#5C2D91', badgeClass: 'bg-purple-600 text-white', dot: '🟣' };
+      return null;
+    }
+
+    // 3. معالجة الإدخال اللحظي لرقم الهاتف مع التحقق وإظهار زر الواتساب
+    function handleSmartPhoneInput(rawVal) {
+      const clean = normalizeEgyptianPhone(rawVal);
+      const badge = document.getElementById('phone-operator-badge');
+      const waBtn = document.getElementById('btn-quick-wa-test');
+
+      const op = getTelecomOperator(clean);
+      if (op && badge) {
+        badge.classList.remove('hidden');
+        badge.className = `text-[10px] font-extrabold px-2 py-0.5 rounded-full ${op.badgeClass} flex items-center gap-1 shadow-xs`;
+        badge.innerHTML = `<span>${op.dot}</span><span>${op.name}</span>`;
+      } else if (badge) {
+        badge.classList.add('hidden');
+      }
+
+      if (/^01[0125][0-9]{8}$/.test(clean)) {
+        if (badge) badge.innerHTML += `<span class="mr-1">✓</span>`;
+        if (waBtn) {
+          waBtn.classList.remove('hidden');
+          waBtn.href = `https://wa.me/2${clean}`;
+        }
+      } else if (waBtn) {
+        waBtn.classList.add('hidden');
+      }
+
+      handleSmartContactSearch(clean, 'phone');
+    }
+
+    // 4. استخراج كافة جهات الاتصال المتاحة
+    function getAllUniqueContacts() {
+      const map = new Map();
+
+      (appState.clients || []).forEach(c => {
+        if (c.phone) {
+          const norm = normalizeEgyptianPhone(c.phone);
+          map.set(norm, {
+            id: c.id,
+            name: c.name || 'عميل',
+            phone: norm,
+            area: c.area || '',
+            address: c.address || '',
+            notes: c.notes || '',
+            historyCount: 0
+          });
+        }
+      });
+
+      (appState.appointments || []).forEach(a => {
+        if (a.phone) {
+          const norm = normalizeEgyptianPhone(a.phone);
+          const existing = map.get(norm);
+          if (existing) {
+            existing.historyCount = (existing.historyCount || 0) + 1;
+            if (!existing.area && a.area) existing.area = a.area;
+            if (!existing.address && a.address) existing.address = a.address;
+            if (!existing.lastService && a.title) existing.lastService = a.title;
+          } else {
+            map.set(norm, {
+              id: a.client_id || ('c_' + Math.random().toString(36).substr(2, 7)),
+              name: a.client_name || 'عميل سابق',
+              phone: norm,
+              area: a.area || '',
+              address: a.address || '',
+              notes: a.notes || '',
+              lastService: a.title || '',
+              historyCount: 1
+            });
+          }
+        }
+      });
+
+      return Array.from(map.values());
+    }
+
+    // 5. البحث اللحظي الفائق الذكاء في الأسماء والأرقام والمناطق
+    function handleSmartContactSearch(query, triggerField) {
+      const dropdown = document.getElementById('smart-contacts-dropdown');
+      const countBadge = document.getElementById('name-match-count');
+      if (!dropdown) return;
+
+      const q = (query || '').trim().toLowerCase();
+      const allContacts = getAllUniqueContacts();
+
+      if (!q) {
+        dropdown.classList.add('hidden');
+        if (countBadge) countBadge.classList.add('hidden');
+        return;
+      }
+
+      const qCleanPhone = normalizeEgyptianPhone(q);
+
+      const matches = allContacts.filter(c => {
+        const nameMatch = (c.name || '').toLowerCase().includes(q);
+        const phoneMatch = c.phone.includes(q) || (qCleanPhone && c.phone.includes(qCleanPhone));
+        const areaMatch = (c.area || '').toLowerCase().includes(q);
+        return nameMatch || phoneMatch || areaMatch;
+      });
+
+      matches.sort((a, b) => (b.historyCount || 0) - (a.historyCount || 0));
+
+      if (matches.length > 0) {
+        if (countBadge) {
+          countBadge.classList.remove('hidden');
+          countBadge.textContent = `${matches.length} مقترح`;
+        }
+        renderContactsDropdown(matches.slice(0, 8), q);
+        dropdown.classList.remove('hidden');
+      } else {
+        if (countBadge) countBadge.classList.add('hidden');
+        dropdown.classList.add('hidden');
+      }
+    }
+
+    // 6. رسم قائمة الاقتراحات المنسدلة
+    function renderContactsDropdown(items, query) {
+      const dropdown = document.getElementById('smart-contacts-dropdown');
+      dropdown.innerHTML = `
+        <div class="p-2 bg-slate-50 dark:bg-[#0B1D48] border-b border-slate-200 dark:border-[#0099F7]/20 flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+          <span class="flex items-center gap-1"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#0099F7]"></i> اقتراحات جهات الاتصال الذكية:</span>
+          <button type="button" onclick="document.getElementById('smart-contacts-dropdown').classList.add('hidden')" class="hover:text-rose-500">✕</button>
+        </div>
+      `;
+
+      items.forEach(c => {
+        const op = getTelecomOperator(c.phone);
+        const itemRow = document.createElement('div');
+        itemRow.className = 'p-3 hover:bg-blue-50 dark:hover:bg-[#0B1D48]/70 border-b border-slate-100 dark:border-slate-800 cursor-pointer flex items-center justify-between gap-3 transition-colors';
+        
+        const avatarInitial = (c.name || 'ع').trim().charAt(0);
+        itemRow.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0B1D48] to-[#0099F7] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+              ${avatarInitial}
+            </div>
+            <div class="min-w-0 text-right">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="font-bold text-xs text-[#0B1D48] dark:text-white truncate">${highlightMatch(c.name, query)}</span>
+                ${c.historyCount > 0 ? `<span class="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">★ ${c.historyCount} زيارة</span>` : ''}
+              </div>
+              <div class="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 flex-wrap">
+                <span class="font-mono text-left dir-ltr font-semibold text-[#0099F7]">${highlightMatch(c.phone, query)}</span>
+                ${op ? `<span class="text-[9px] px-1 rounded ${op.badgeClass}">${op.name}</span>` : ''}
+                ${c.area ? `<span class="truncate">📍 ${c.area}</span>` : ''}
+              </div>
+            </div>
+          </div>
+          <button type="button" class="px-2.5 py-1 rounded-xl bg-blue-50 dark:bg-[#0099F7]/20 text-[#0099F7] text-[11px] font-bold shrink-0 hover:bg-[#0099F7] hover:text-white transition-all">
+            تعبئة ↵
+          </button>
+        `;
+
+        itemRow.onclick = () => applySelectedContact(c);
+        dropdown.appendChild(itemRow);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function highlightMatch(text, query) {
+      if (!text || !query) return text || '';
+      const idx = text.toLowerCase().indexOf(query.toLowerCase());
+      if (idx === -1) return text;
+      const before = text.substring(0, idx);
+      const match = text.substring(idx, idx + query.length);
+      const after = text.substring(idx + query.length);
+      return `${before}<span class="bg-[#0099F7]/25 text-[#0099F7] font-black rounded px-0.5">${match}</span>${after}`;
+    }
+
+    // 7. تطبيق بيانات جهة الاتصال المختارة في الحقول بلمسة واحدة
+    function applySelectedContact(c) {
+      if (!c) return;
+      document.getElementById('form-apt-client-name').value = c.name || '';
+      const cleanPhone = normalizeEgyptianPhone(c.phone || '');
+      document.getElementById('form-apt-phone').value = cleanPhone;
+
+      if (c.area) {
+        const areaSelect = document.getElementById('form-apt-area');
+        let matched = false;
+        for (let opt of areaSelect.options) {
+          if (opt.value === c.area || c.area.includes(opt.value)) {
+            areaSelect.value = opt.value;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched && c.area) {
+          areaSelect.value = 'منطقة أخرى';
+        }
+      }
+
+      if (c.address) {
+        document.getElementById('form-apt-address').value = c.address;
+      }
+      if (c.notes && !document.getElementById('form-apt-notes').value) {
+        document.getElementById('form-apt-notes').value = c.notes;
+      }
+
+      document.getElementById('smart-contacts-dropdown').classList.add('hidden');
+      const countBadge = document.getElementById('name-match-count');
+      if (countBadge) countBadge.classList.add('hidden');
+
+      handleSmartPhoneInput(cleanPhone);
+
+      const nameInput = document.getElementById('form-apt-client-name');
+      const phoneInput = document.getElementById('form-apt-phone');
+      nameInput.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-50/50');
+      phoneInput.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-50/50');
+      setTimeout(() => {
+        nameInput.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-50/50');
+        phoneInput.classList.remove('ring-2', 'ring-emerald-500', 'bg-emerald-50/50');
+      }, 900);
+    }
+
+    // 8. اختيار جهة اتصال مباشرة من دليل الهاتف (Contact Picker API)
+    async function triggerNativeContactPicker() {
+      if ('contacts' in navigator && 'ContactsManager' in window) {
+        try {
+          const props = ['name', 'tel', 'address'];
+          const contacts = await navigator.contacts.select(props, { multiple: false });
+          if (contacts && contacts.length > 0) {
+            const c = contacts[0];
+            const name = (c.name && c.name[0]) || '';
+            let phone = (c.tel && c.tel[0]) || '';
+            phone = normalizeEgyptianPhone(phone);
+            let addr = '';
+            let area = '';
+            if (c.address && c.address[0]) {
+              const a = c.address[0];
+              addr = [a.addressLine, a.city, a.region].filter(Boolean).join(' - ');
+              area = detectAreaFromString(addr);
+            }
+            const contactObj = { name, phone, area, address: addr };
+            applySelectedContact(contactObj);
+            saveOrUpdateClientLocally(contactObj);
+            return;
+          }
+        } catch (err) {
+          console.warn('Contact picker cancelled or blocked:', err);
+        }
+      }
+      document.getElementById('vcf-file-input').click();
+    }
+
+    // 9. استيراد ملفات جهات الاتصال VCF / vCard / CSV
+    async function handleVcfImport(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        const text = e.target.result;
+        let imported = [];
+
+        if (file.name.toLowerCase().endsWith('.csv')) {
+          imported = parseCsvContacts(text);
+        } else {
+          imported = parseVCardContacts(text);
+        }
+
+        if (imported.length === 0) {
+          alert('لم يتم العثور على أرقام هواتف صالحة داخل الملف المحدد.');
+          return;
+        }
+
+        let addedCount = 0;
+        const currentClients = appState.clients || [];
+        imported.forEach(c => {
+          const norm = normalizeEgyptianPhone(c.phone);
+          if (norm && !currentClients.some(x => normalizeEgyptianPhone(x.phone) === norm)) {
+            currentClients.push({
+              id: 'c_' + Math.random().toString(36).substr(2, 9),
+              name: c.name || 'جهة اتصال',
+              phone: norm,
+              area: c.area || detectAreaFromString(c.address),
+              address: c.address || '',
+              notes: 'مستورد من دليل الهاتف / واتساب',
+              created_at: new Date().toISOString()
+            });
+            addedCount++;
+          }
+        });
+
+        appState.clients = currentClients;
+        localStorage.setItem('alfath_clients', JSON.stringify(currentClients));
+
+        try {
+          await fetch('/api/clients/bulk', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ clients: currentClients })
+          });
+        } catch (err) {}
+
+        updateSettingsContactsBadge();
+        alert(`✓ تم بنجاح استيراد ومزامنة ${addedCount} جهة اتصال جديدة إلى دليل الفتح الذكي!\nأصبحت الآن متاحة فوراً للاقتراح التلقائي الذكي.`);
+      };
+
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    // 10. محلل ملفات VCF vCard
+    function parseVCardContacts(vcfContent) {
+      const contacts = [];
+      const vcardBlocks = vcfContent.split(/BEGIN:VCARD/i);
+
+      vcardBlocks.forEach(block => {
+        if (!block.trim()) return;
+        let name = '';
+        let phone = '';
+        let address = '';
+
+        const fnMatch = block.match(/(?:^|\n)FN(?:;[^\n:]*)?:([^\r\n]+)/i);
+        if (fnMatch) {
+          name = fnMatch[1].trim();
+        } else {
+          const nMatch = block.match(/(?:^|\n)N(?:;[^\n:]*)?:([^\r\n]+)/i);
+          if (nMatch) {
+            name = nMatch[1].split(';').filter(Boolean).reverse().join(' ').trim();
+          }
+        }
+
+        const telMatches = block.matchAll(/(?:^|\n)TEL(?:;[^\n:]*)?:([^\r\n]+)/gi);
+        for (const tm of telMatches) {
+          const p = normalizeEgyptianPhone(tm[1]);
+          if (p && p.length >= 10) {
+            phone = p;
+            break;
+          }
+        }
+
+        const adrMatch = block.match(/(?:^|\n)ADR(?:;[^\n:]*)?:([^\r\n]+)/i);
+        if (adrMatch) {
+          address = adrMatch[1].split(';').filter(Boolean).join(' - ').trim();
+        }
+
+        if (phone) {
+          contacts.push({ name: name || 'عميل', phone, address, area: detectAreaFromString(address) });
+        }
+      });
+
+      return contacts;
+    }
+
+    // 11. محلل ملفات CSV
+    function parseCsvContacts(csvContent) {
+      const lines = csvContent.split(/\r?\n/).filter(l => l.trim());
+      if (lines.length < 2) return [];
+
+      const header = lines[0].toLowerCase().split(',');
+      const nameIdx = header.findIndex(h => h.includes('name') || h.includes('اسم'));
+      const phoneIdx = header.findIndex(h => h.includes('phone') || h.includes('tel') || h.includes('هاتف') || h.includes('موبايل'));
+      const addrIdx = header.findIndex(h => h.includes('address') || h.includes('عنوان'));
+
+      const results = [];
+      for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(',');
+        const rawPhone = phoneIdx !== -1 ? parts[phoneIdx] : '';
+        const phone = normalizeEgyptianPhone(rawPhone);
+        if (phone && phone.length >= 10) {
+          const name = nameIdx !== -1 ? parts[nameIdx] : 'عميل';
+          const address = addrIdx !== -1 ? parts[addrIdx] : '';
+          results.push({ name: name.trim(), phone, address: address.trim(), area: detectAreaFromString(address) });
+        }
+      }
+      return results;
+    }
+
+    // 12. تصدير جهات الاتصال إلى ملف VCF قياسي
+    function exportContactsVcf() {
+      const contacts = getAllUniqueContacts();
+      if (contacts.length === 0) {
+        alert('لا توجد جهات اتصال مسجلة حالياً للتصدير.');
+        return;
+      }
+
+      let vcf = '';
+      contacts.forEach(c => {
+        vcf += "BEGIN:VCARD\r\nVERSION:3.0\r\n";
+        vcf += `FN;CHARSET=UTF-8:${c.name}\r\n`;
+        vcf += `TEL;TYPE=CELL:${c.phone}\r\n`;
+        if (c.address || c.area) vcf += `ADR;CHARSET=UTF-8:;;${c.area || ''} - ${c.address || ''};;;;\r\n`;
+        vcf += "ORG;CHARSET=UTF-8:شركة الفتح للأنظمة الذكية\r\n";
+        vcf += "END:VCARD\r\n";
+      });
+
+      const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `جهات_اتصال_الفتح_الذكي_${new Date().toISOString().split('T')[0]}.vcf`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // 13. نافذة ومعالج لصق محادثة أو كارت واتساب السريع
+    function openWhatsAppQuickPasteModal() {
+      document.getElementById('wa-paste-input').value = '';
+      document.getElementById('wa-paste-modal').classList.remove('hidden');
+      document.getElementById('wa-paste-input').focus();
+    }
+
+    function closeWhatsAppQuickPasteModal() {
+      document.getElementById('wa-paste-modal').classList.add('hidden');
+    }
+
+    function processWhatsAppPaste() {
+      const text = document.getElementById('wa-paste-input').value.trim();
+      if (!text) {
+        alert('يرجى لصق نص الرسالة أو كارت العميل أولاً');
+        return;
+      }
+
+      const phoneMatch = text.match(/(?:(?:\+?20)|0)?1[0125][0-9]{8}/);
+      let phone = phoneMatch ? normalizeEgyptianPhone(phoneMatch[0]) : '';
+      const area = detectAreaFromString(text) || 'التجمع الخامس';
+
+      let name = '';
+      const namePatterns = [
+        /(?:أنا|معاك|العميل|الاسم|أ\/|م\/|د\/)\s*:?\s*([^\n,،0-9]{3,25})/i,
+        /FN(?:;[^\n:]*)?:([^\r\n]+)/i
+      ];
+      for (let p of namePatterns) {
+        const m = text.match(p);
+        if (m && m[1]) {
+          name = m[1].trim();
+          break;
+        }
+      }
+      if (!name) {
+        const firstLine = text.split('\n')[0].replace(/[0-9+]/g, '').trim();
+        if (firstLine.length > 2 && firstLine.length < 30) name = firstLine;
+        else name = 'عميل واتساب';
+      }
+
+      let type = 'inspection';
+      let title = '';
+      if (/تركيب|انتركم|شاشات|تأسيس/i.test(text)) {
+        type = 'installation';
+        title = 'تركيب نظام وأنظمة أمنية';
+      } else if (/صيانة|عطل|فاصلة|مش شغالة|تصليح/i.test(text)) {
+        type = 'maintenance';
+        title = 'صيانة وفحص أعطال';
+      } else if (/زيارة|استشارة|تخطيط/i.test(text)) {
+        type = 'visit';
+        title = 'زيارة فنية واستشارة';
+      } else {
+        type = 'inspection';
+        title = 'معاينة موقع ورفع مقاسات';
+      }
+
+      document.getElementById('form-apt-client-name').value = name;
+      if (phone) {
+        document.getElementById('form-apt-phone').value = phone;
+        handleSmartPhoneInput(phone);
+      }
+      document.getElementById('form-apt-area').value = area;
+      document.getElementById('form-apt-type').value = type;
+      if (!document.getElementById('form-apt-title-input').value) {
+        document.getElementById('form-apt-title-input').value = title;
+      }
+      document.getElementById('form-apt-address').value = text.substring(0, 150);
+
+      closeWhatsAppQuickPasteModal();
+
+      if (phone) {
+        saveOrUpdateClientLocally({ name, phone, area, address: text.substring(0, 150) });
+      }
+    }
+
+    // 14. كشف المنطقة تلقائياً من النص
+    function detectAreaFromString(str) {
+      if (!str) return 'التجمع الخامس';
+      const s = str.toLowerCase();
+      if (s.includes('تجمع') || s.includes('نرجس') || s.includes('تسعين') || s.includes('ياسمين') || s.includes('بنفسج') || s.includes('قاهرة جديدة')) return 'التجمع الخامس';
+      if (s.includes('زايد') || s.includes('أكتوبر') || s.includes('بيفرلي') || s.includes('خمائل') || s.includes('حدائق')) return 'الشيخ زايد';
+      if (s.includes('معادي') || s.includes('دجلة') || s.includes('مقطم') || s.includes('زهراء')) return 'المعادي';
+      if (s.includes('مدينة نصر') || s.includes('مصر الجديدة') || s.includes('هليوبوليس') || s.includes('شيراتون')) return 'مدينة نصر';
+      if (s.includes('شروق') || s.includes('مدينتي') || s.includes('بدر') || s.includes('رحاب')) return 'الشروق';
+      if (s.includes('عاصمة') || s.includes('r7') || s.includes('r3') || s.includes('داون تاون')) return 'العاصمة الإدارية';
+      return 'التجمع الخامس';
+    }
+
+    // 15. حفظ أو تحديث بيانات العميل محلياً
+    function saveOrUpdateClientLocally(c) {
+      if (!c || !c.phone) return;
+      const cleanPhone = normalizeEgyptianPhone(c.phone);
+      if (!appState.clients) appState.clients = [];
+      const existing = appState.clients.find(x => normalizeEgyptianPhone(x.phone) === cleanPhone);
+      if (existing) {
+        if (c.name && (!existing.name || existing.name === 'عميل')) existing.name = c.name;
+        if (c.area) existing.area = c.area;
+        if (c.address) existing.address = c.address;
+      } else {
+        appState.clients.push({
+          id: 'c_' + Math.random().toString(36).substr(2, 9),
+          name: c.name || 'عميل جديد',
+          phone: cleanPhone,
+          area: c.area || '',
+          address: c.address || '',
+          notes: c.notes || '',
+          created_at: new Date().toISOString()
+        });
+      }
+      localStorage.setItem('alfath_clients', JSON.stringify(appState.clients));
+      updateSettingsContactsBadge();
+    }
+
+    function updateSettingsContactsBadge() {
+      const badge = document.getElementById('settings-contacts-count');
+      if (badge) {
+        const count = getAllUniqueContacts().length;
+        badge.textContent = `${count} جهة اتصال مسجلة`;
+      }
+    }
+
+    // إغلاق قائمة الاقتراحات المنسدلة عند النقر في أي مكان خارجها
+    document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('smart-contacts-dropdown');
+      if (dropdown && !dropdown.contains(e.target) && e.target.id !== 'form-apt-client-name' && e.target.id !== 'form-apt-phone') {
+        dropdown.classList.add('hidden');
+      }
+    });
 
     function openDragConfirmModal(apt, oldDate, oldTime, newDate, newTime) {
       const modal = document.getElementById('drag-confirm-modal');
@@ -1961,6 +2649,8 @@
       document.getElementById('set-buffer').value = s.default_buffer_minutes || 45;
       document.getElementById('set-approval-mode').value = s.booking_approval_mode || 'manual';
       document.getElementById('set-gemini-key').value = s.gemini_api_key || '';
+
+      updateSettingsContactsBadge();
 
       const tpls = s.whatsapp_templates || {};
       document.getElementById('set-tpl-confirm').value = tpls.confirmation || '';

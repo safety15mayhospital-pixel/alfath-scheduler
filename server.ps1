@@ -205,6 +205,34 @@ try {
             $db = Get-Database
             $responseBytes = [System.Text.Encoding]::UTF8.GetBytes(($db.clients | ConvertTo-Json -Depth 10))
         }
+        elseif ($urlPath -eq '/api/clients/bulk' -and $method -eq 'POST') {
+            $db = Get-Database
+            $reqData = $reqBody | ConvertFrom-Json
+            $newClients = $reqData.clients
+            $addedCount = 0
+            $clientList = [System.Collections.ArrayList]@($db.clients)
+            foreach ($c in $newClients) {
+                if ($c.phone) {
+                    $cPhone = [string]$c.phone
+                    $exists = $clientList | Where-Object { $_.phone -eq $cPhone }
+                    if (-not $exists) {
+                        $clientList.Add([PSCustomObject]@{
+                            id = if ($c.id) { $c.id } else { "c_" + [Guid]::NewGuid().ToString().Substring(0,8) }
+                            name = if ($c.name) { $c.name } else { "عميل بدون اسم" }
+                            phone = $cPhone
+                            area = if ($c.area) { $c.area } else { "" }
+                            address = if ($c.address) { $c.address } else { "" }
+                            notes = if ($c.notes) { $c.notes } else { "تمت المزامنة من جهات الاتصال" }
+                            created_at = (Get-Date).ToString("o")
+                        }) | Out-Null
+                        $addedCount++
+                    }
+                }
+            }
+            $db.clients = $clientList
+            Save-Database $db
+            $responseBytes = [System.Text.Encoding]::UTF8.GetBytes(('{"success": true, "added_count": ' + $addedCount + ', "total_clients": ' + $clientList.Count + '}'))
+        }
 
         # -------------------------------------------------------------
         # 4. API: /api/emergency/close-today

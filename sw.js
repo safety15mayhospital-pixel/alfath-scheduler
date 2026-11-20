@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alfateh-cache-v5';
+const CACHE_NAME = 'alfateh-cache-v6';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
